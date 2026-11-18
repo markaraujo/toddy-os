@@ -194,7 +194,7 @@ def _qualify(assembly,manifest,policy,system,*,recover_live):
         raise ValueError('Resource qualification requires fixed native source assembly')
     intent_name=('resource-account-recovery-intent2.json' if recover_live=='accounts' else
         'resource-directory-recovery-intent.json' if recover_live else 'resource-intent.json')
-    outputs=(intent_name,'candidate-generated-entries.json','candidate-clean-image-manifest.json','candidate-resource-receipt.json')
+    outputs=(intent_name,'resource-command-failure.json','candidate-generated-entries.json','candidate-clean-image-manifest.json','candidate-resource-receipt.json')
     if any(os.path.lexists(work/name) for name in outputs):raise ValueError('Preserve prior/uncertain resource generation')
     validate_policy(policy,manifest)
     plan=resource_plan(manifest)
@@ -237,7 +237,16 @@ def _qualify(assembly,manifest,policy,system,*,recover_live):
             tool=recipe['tool'];verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
             command=recipe['argv']
             if tuple(command) not in seen:
-                system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);commands.append(command);seen.add(tuple(command));assembly.recheck()
+                try:system.run(['/usr/sbin/chroot',str(root),*command],timeout=120)
+                except Exception as error:
+                    # Fixed cache argv contain no account secrets. Keep the
+                    # first failed producer visible while preserving the intent
+                    # and every partial native effect for separate diagnosis.
+                    save(work/'resource-command-failure.json',{'version':1,'output':virtual,'argv':command,
+                        'completed_commands':commands,'error_type':type(error).__name__,
+                        'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev})
+                    raise
+                commands.append(command);seen.add(tuple(command));assembly.recheck()
             path=root/virtual.lstrip('/')
             if path.is_symlink() or not path.is_file():raise ValueError('Candidate resource output missing')
             cache_results[virtual]={'recorded_sha256':binding['output_sha256'],'actual_sha256':p.digest(path),

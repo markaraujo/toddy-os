@@ -10,3 +10,24 @@ Date: 2026-11-18 UTC. This is failure evidence, not B06, ISO, boot or G2 accepta
 - After failure, target free space was 26,511,298,560 bytes. The Candidate VM stopped cleanly; accepted backings were rechecked by its stop guard. Both generations 1 and 3 are preserved with their intents. Neither is eligible for command replay or custody retirement.
 
 Next action: capture the exact failing producer and bounded stderr in a disposable overlay under the image wrapper's protected mount namespace. Resolve any actual cache output drift. Measure additional target space before creating another fresh root; the current margin over the one-root preflight is only about 480 MiB. Use a new generation only after the failure and capacity have been independently reconciled.
+
+## Continued read-only analysis
+
+Protected mount-namespace overlay probes on 2026-11-18 reproduced the wrapper's
+stage/source topology and clean environment. All fixed cache commands exited 0,
+including a probe with the cache outputs restored from the exact package bytes.
+This does not identify the original first nonzero command, because the root had
+already acquired partial effects. The source now records the first failing fixed
+command in a new private failure file for future generations; no command was
+replayed in generations 1 or 3.
+
+The selected GDK and GTK package caches have SHA-256 values
+`756bea55f0aada7f6750be7489bd3b7306ae47ddb298b5735586a14e1cd3af9f`
+and `ca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828`.
+Their exact `.deb` members match those values. Native regeneration instead gave
+`2d9a6920934ee24d197b5a27bc8fcd3cb3628df46301e52ea066f775631f6fa1`
+and `c621b3f0b769200694a3244a1208a471ec388823f827a8692980b5a6f755f70c`.
+The differences are a trailing blank line (GDK) and a module-path comment plus
+trailing newline (GTK). The current signed inputs require regeneration, so both
+are independent acceptance blockers even if every command returns 0. See the
+[blocker audit](../PHASE-2-BLOCKER-AUDIT-2026-11-18.md) for the full correction chain.

@@ -9,7 +9,8 @@ The MVP live roots `toddy-mvp-live-image-1` and
 frozen. Generation 3 unpacked 329 packages but qualification failed without a
 receipt. Never replay their intents, copy either root into a future generation,
 or treat partial cache output as acceptance. The first slice is stopped until
-the exact producer failure and a measured new-root capacity path are resolved.
+the cache provenance/package chain and a measured new-root capacity path are
+resolved. See the [blocker audit](PHASE-2-BLOCKER-AUDIT-2026-11-18.md).
 
 ## Small verified slices
 

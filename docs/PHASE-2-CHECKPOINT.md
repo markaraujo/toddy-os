@@ -2,6 +2,10 @@
 
 ## Current stop after generation 3 (2026-11-18)
 
+The [blocker audit](PHASE-2-BLOCKER-AUDIT-2026-11-18.md) is the current
+correction order. It also records the deterministic GDK/GTK cache mismatch and
+the installer source-hash closure that prevents a source-only finalizer fix.
+
 The normal `mvp-live` profile and custody profile selected new generation 3.
 Source sync passed after correcting the Ubuntu `/var/log` guard; its normal mode
 was restored and the growth receipt guard passed again. The isolated `dconf
@@ -13,10 +17,11 @@ Generation 1 and generation 3 are both frozen. Do not replay either intent or
 run a native producer in either root. The Candidate VM was cleanly stopped.
 See [the generation 3 failure record](evidence/B06-generation3.md).
 
-The slice is stopped under the bounded failure policy. Next, identify the exact
-first failing producer and its exit/stderr in a disposable overlay inside the
-same protected namespace, without writing generations 1 or 3. Reconcile the
-expected cache hashes and capacity before planning a new generation; current
+The slice is stopped under the bounded failure policy. Disposable overlay probes
+under the protected mount topology returned zero exits, so the exact original
+nonzero producer remains unknown. A future fresh generation will record the
+first failed fixed command. Reconcile the cache provenance, installer package,
+reviewed inputs and capacity before planning a new generation; current
 guest free space was 26,511,298,560 bytes, only about 480 MiB above the
 26,031,034,368-byte one-root preflight, so no new root is admitted without a
 fresh measured capacity plan. The next user-visible milestone remains a local
@@ -24,7 +29,7 @@ graphical VM preview. Public B13/G2 and portal handoff still require B01–B12
 acceptance and final ISO evidence. The default 100 GiB host-export reserve
 remains outside ADR-0251's temporary local MVP delivery scope.
 
-## Read-only restart reconciliation (2026-11-18)
+## Historical read-only restart reconciliation (earlier 2026-11-18)
 
 Git is clean at 02b4981 before this environment correction. No guest writer is
 running. The stopped `toddy-phase2-candidate` Docker record exited 0 and was
@@ -50,11 +55,9 @@ The command's stderr was suppressed, so its failure cause remains unknown and
 the partially changed root is not qualified. Never replay any of the three
 resource intents or run another native producer in this root. Source now scopes
 this producer to `dconf compile /etc/dconf/db/toddy-desktop
-/etc/dconf/db/toddy-desktop.d`, avoiding unrelated databases. The next
-development slice must sync that reviewed source through the controlled guest
-path, verify its expected output in an isolated disposable root, preserve this
-failed root, then plan a distinct fresh candidate generation. Stop after one
-failed isolated probe; an unchanged retry is not justified by this evidence.
+/etc/dconf/db/toddy-desktop.d`, avoiding unrelated databases. That source was
+subsequently synced and tested; the current stop and correction order above
+supersede the original next-action text.
 
 The target ext4 had 30.45 GiB available, above its unchanged 16 GiB reserve.
 The host had about 92 GiB available, below the default Candidate 100 GiB +
@@ -63,7 +66,8 @@ The host had about 92 GiB available, below the default Candidate 100 GiB +
 explicitly for this MVP candidate only; ordinary starts and preparation keep
 their default floor. Recheck actual free space before starting. The first
 start after this source change requires a clean committed checkout and the
-existing single-writer/backing guards. Do not infer B06, ISO or G2 acceptance.
+existing single-writer/backing guards. This first start was later completed;
+do not infer B06, ISO or G2 acceptance.
 
 ## Immediate owner UI delivery
 
@@ -76,8 +80,9 @@ The owner now requests a real graphical VM/image to validate while development
 continues. Follow [today delivery execution](PHASE-2-TODAY-DELIVERY.md). Complete
 plan delivery remains the target; basic-tested intermediate media is not G2.
 Actual base unpack passed321configured packages. Historical pre-intent resource
-qualification and its correction89d2888 remain recorded, but the current live
-root is at the failed account-recovery intent described above. No ISO exists yet.
+qualification and its correction89d2888 remain recorded. Generation 1 retained
+the failed account-recovery intent; generation 3 later failed qualification as
+recorded at the top of this card. No ISO exists yet.
 
 ## Basic-tested MVP delivery current
 
