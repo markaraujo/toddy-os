@@ -1,11 +1,18 @@
 """Minimal revision4 source/refusal checks; no guest/native package writes."""
-import hashlib,importlib.util,json,os,tempfile,unittest
+import hashlib,importlib.util,json,os,stat,tempfile,unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location('installer4',ROOT/'scripts/build/phase2/installer_mvp_native.py')
 p=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(p)
 class Installer4Tests(unittest.TestCase):
+ def test_only_exact_ubuntu_syslog_parent_is_allowed(self):
+  group=p.grp.getgrnam('syslog').gr_gid
+  row=SimpleNamespace(st_mode=stat.S_IFDIR|0o775,st_uid=0,st_gid=group)
+  self.assertTrue(p.trusted_coherence_ancestor(Path('/var/log'),row))
+  self.assertFalse(p.trusted_coherence_ancestor(Path('/var/log/toddy'),row))
+  self.assertFalse(p.trusted_coherence_ancestor(Path('/var/log'),SimpleNamespace(st_mode=stat.S_IFDIR|0o777,st_uid=0,st_gid=group)))
  def test_runtime_source_map_includes_cross_directory_handoff_and_finalizer(self):
   with patch.object(p,'ROOT',ROOT):files=p.runtime_source_map()
   for name in ('runtime/installer/native_finalizer.py','scripts/build/phase2/offline_payload.py','runtime/setup/installer_handoff.py','runtime/shared/json.py'):

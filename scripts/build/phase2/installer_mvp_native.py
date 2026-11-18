@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Installer revision4: current Python payload, exact qualified compile3 reuse."""
-import fcntl,hashlib,importlib.util,json,os,shutil,stat,subprocess,sys
+import fcntl,grp,hashlib,importlib.util,json,os,shutil,stat,subprocess,sys
 from pathlib import Path
 sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;sys.path[:0]=[str(HERE),str(HERE.parent)]
@@ -138,13 +138,19 @@ def runtime_source_map():
         files[path.relative_to(ROOT).as_posix()]=digest(path)
     return files
 
+def trusted_coherence_ancestor(parent,info):
+    if not stat.S_ISDIR(info.st_mode) or info.st_uid:return False
+    if parent==Path('/var/log'):
+        return info.st_gid==grp.getgrnam('syslog').gr_gid and stat.S_IMODE(info.st_mode)==0o775
+    return not info.st_mode&0o022
+
 def runtime_coherence():
     files=runtime_source_map();canonical=json.dumps(files,sort_keys=True,separators=(',',':')).encode()
     sha=hashlib.sha256(canonical).hexdigest();path=BUILD/('input-source-coherence-'+sha+'.json')
     if path.resolve()!=path:raise ValueError('Installer source coherence proof redirected')
     for parent in path.parents:
         info=parent.lstat()
-        if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_mode&0o022:raise ValueError('Installer source coherence ancestry')
+        if not trusted_coherence_ancestor(parent,info):raise ValueError('Installer source coherence ancestry')
     info=path.lstat()
     if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or info.st_mode&0o022 or info.st_size>1024**2:raise ValueError('Installer source coherence proof custody')
     value=read(path)
