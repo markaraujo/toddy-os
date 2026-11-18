@@ -30,6 +30,12 @@ HISTORICAL={'h10-expanded':('h10-live-root',8707435,1794055093154113811,'h10'),
 
 def configure(profile):
     global PROFILE,WORK,ARTIFACT,REVIEWED,FINAL_ROOT,INPUTS,CUSTODY,STATE,VIRTUAL
+    if profile=='mvp-live-stage6':
+        PROFILE=profile;WORK=TARGET/'sources/stage/toddy-mvp-live-image-2';ARTIFACT=WORK/'mvp-live-root-2'
+        REVIEWED=WORK;FINAL_ROOT=ARTIFACT;INPUTS=TARGET/'sources/stage/toddy-mvp-live-native-inputs-4'
+        CUSTODY=WORK/'stage6-root-custody-1';STATE=CUSTODY/'custody.json'
+        VIRTUAL='/sources/stage/toddy-mvp-live-image-2/mvp-live-root-2'
+        return
     if profile in HISTORICAL:
         PROFILE=profile;name,_inode,_mtime,_proof=HISTORICAL[profile]
         WORK=TARGET/'sources/stage';ARTIFACT=WORK/name;REVIEWED=FINAL_ROOT=INPUTS=None
@@ -192,6 +198,7 @@ def historical_eligible():
 def eligible():
     """Fixed workflow boundary; full archive metadata proof remains separate."""
     if PROFILE in HISTORICAL:return historical_eligible()
+    if PROFILE=='mvp-live-stage6':return failed_stage_eligible()
     if PROFILE in ('mvp-live-failed3','mvp-live-failed4','mvp-live-failed5'):return failed_live_eligible()
     p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
     pin=[root.st_dev,work.st_ino,root.st_ino]
@@ -282,6 +289,33 @@ def failed_live_eligible():
     no_mounts()
     return {'profile':PROFILE,'assembly_pin':pin,'preserved':preserved,
         'workflow_boundary':'uncertain-'+PROFILE+'-root-archival-only-no-resource-acceptance',
+        'root_retirement_only_after_complete_private_host_proof':True,
+        'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
+
+
+def failed_stage_eligible():
+    """Retire only the partial live transform after full private archive proof."""
+    work=private(WORK,0o700);root=private(ARTIFACT,0o755)
+    pin=[root.st_dev,work.st_ino,root.st_ino]
+    finalized=read(WORK/'finalized.json');intent=read(WORK/'live-profile-intent.json')
+    if (finalized.get('state')!='native-finalizer-verified' or finalized.get('root')!=VIRTUAL or
+            finalized.get('assembly_pin')!=pin or
+            intent.get('kind')!='source-attributed-live-transform' or
+            intent.get('base_image_manifest_sha256')!=finalized.get('image_manifest_sha256') or
+            intent.get('source_sha256')!='c4e55e7289cea15875cafed6b0ab51fbacef945ff842da57d27526bf22b81de1' or
+            os.path.lexists(WORK/'live-profile-receipt.json') or
+            not (ARTIFACT/'etc/dconf/db/ibus').is_file()):
+        raise ValueError('candidate_root_custody_exact_partial_stage6_required')
+    paths=[WORK/name for name in ('adoption-intent.json','adopted.json','finalize-intent.json','finalized.json',
+                                   'synthetic-reset-intent.json','live-profile-intent.json')]
+    paths.extend(INPUTS/name for name in ('input-prepared.json','policy.json','payload/manifest.json',
+                                           'generated-entries.json','expected-image-manifest.json'))
+    paths.extend((ROOT/'scripts/build/phase2/image_native.sh',ROOT/'scripts/build/phase2/candidate_root_custody.py',
+                  ROOT/'scripts/build/phase2/live_profile.py'))
+    preserved={str(path):archive.sha(secured(path)) for path in paths}
+    no_mounts()
+    return {'profile':PROFILE,'assembly_pin':pin,'preserved':preserved,
+        'workflow_boundary':'partial-live-stage6-root-archival-only-no-media-or-boot-acceptance',
         'root_retirement_only_after_complete_private_host_proof':True,
         'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
 
@@ -396,7 +430,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():

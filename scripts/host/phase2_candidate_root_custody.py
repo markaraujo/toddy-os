@@ -13,8 +13,8 @@ ROOT=vm.ROOT
 
 def configure(profile):
     global PROFILE,CONTEXT,ARCHIVE_NAME
-    if profile not in ('offline','live','mvp-offline','mvp-live','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
-    generation=6 if profile=='mvp-live' else 5 if profile=='mvp-live-failed5' else 4 if profile=='mvp-live-failed4' else 3 if profile=='mvp-live-failed3' else 1
+    if profile not in ('offline','live','mvp-offline','mvp-live','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
+    generation=6 if profile in ('mvp-live','mvp-live-stage6') else 5 if profile=='mvp-live-failed5' else 4 if profile=='mvp-live-failed4' else 3 if profile=='mvp-live-failed3' else 1
     PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+f'-candidate-root-custody-{generation}');ARCHIVE_NAME=profile+f'-candidate{generation}-root.tar.gz'
     if profile in ('h10-expanded','h11-expanded'):
         CONTEXT=ROOT/'.local/phase2'/(profile+'-root-custody-1');ARCHIVE_NAME=profile+'-root.tar.gz'
@@ -97,7 +97,7 @@ def main(profile='offline'):
         if os.path.lexists(CONTEXT):raise ValueError('candidate_root_host_existing_or_uncertain_no_replay')
         identity=candidate.owned();candidate.bases();selected=read_guest('inspect')
         if selected.get('state')!='eligible-'+PROFILE+'-candidate1-custody' or type(selected.get('tar_upper_bound_bytes')) is not int or selected['tar_upper_bound_bytes']<=0:raise ValueError('candidate_root_host_actual_eligibility_required')
-        reserve=(host_floor(True) if PROFILE in ('mvp-live-failed3','mvp-live-failed4','mvp-live-failed5') else
+        reserve=(host_floor(True) if PROFILE in ('mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6') else
             json.loads((ROOT/'config/build-host.lock.json').read_bytes())['host_free_reserve_gib']*1024**3)
         upper=selected['tar_upper_bound_bytes'];space=os.statvfs(parent)
         if space.f_bavail*space.f_frsize<reserve+upper+512*1024**2:raise ValueError('candidate_root_host_reserve_plus_whole_stream_bound')

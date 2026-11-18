@@ -203,7 +203,10 @@ def stage(assembly,manifest,policy,media_id,system):
         if path.parent.resolve()!=path.parent:raise ValueError('Live service parent redirects')
         os.symlink(target,path)
     tool=_selected(root,manifest,'/usr/bin/dconf')
-    system.run(['/usr/sbin/chroot',str(root),'/usr/bin/dconf','update'],timeout=120);assembly.recheck()
+    # Compile only the new live database. A global update also creates an
+    # unrelated IBus database outside this profile's reviewed delta.
+    command=['/usr/bin/dconf','compile','/etc/dconf/db/toddy-live','/etc/dconf/db/toddy-live.d']
+    system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);assembly.recheck()
     after=snapshot(root);allowed=set(files)|set(links)|{'/home/'+LIVE_USER,'/etc/dconf/db/toddy-live'}
     for path in list(allowed):
         parent=Path(path).parent
@@ -221,7 +224,7 @@ def stage(assembly,manifest,policy,media_id,system):
         'base_image_manifest_sha256':receipt['image_manifest_sha256'],'live_image_manifest_sha256':p.digest(work/'live-image-manifest.json'),
         'media_id':media_id,'image_class_sha256':p.digest(root/str(IMAGE_CLASS).lstrip('/')),'source_sha256':p.digest(__file__),
         'attributed_delta':{path:{'before':before.get(path),'after':after.get(path),'origin':'fresh-live-gnome-profile'} for path in sorted(changed)},
-        'native_commands':[['/usr/bin/dconf','update']],'native_dconf_tool_sha256':p.digest(tool),
+        'native_commands':[command],'native_dconf_tool_sha256':p.digest(tool),
         'passwords_locked':True,'live_uid':LIVE_UID,'live_user':LIVE_USER,'wheel_membership':False,
         'native_boot_verified':False,'native_login_verified':False,'production_ready':False,
         'next':'Independent delta review, full H10 compression snapshot/journal, then actual live GDM/PAM/installer authorization and installed-image exclusion proof.'}
