@@ -41,7 +41,7 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.SOURCE.name,'toddy-installer-0.2.0-5');self.assertTrue(p.INSTALL.endswith('install5.sh'))
    with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy3')
    self.assertEqual((p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION),original)
-   for invalid in (3,8,'5'):
+   for invalid in (3,9,'5'):
     with self.assertRaises(ValueError):p.configure(invalid)
   finally:p.configure(4)
 
@@ -69,6 +69,16 @@ class Installer4Tests(unittest.TestCase):
    with patch.object(p,'read',return_value={}),patch.object(p,'runtime_coherence',side_effect=ValueError('coherence refusal')),patch.object(p,'original_compile') as reuse:
     with self.assertRaisesRegex(ValueError,'coherence refusal'):p.qualify()
     reuse.assert_not_called()
+  finally:p.configure(4)
+
+ def test_generation8_uses_fresh_version_and_exact_previous7(self):
+  try:
+   p.configure(8)
+   self.assertEqual(p.VERSION,'0.2.0-1+toddy6')
+   self.assertEqual(p.BASELINE_VERSION,'0.2.0-1+toddy5')
+   self.assertEqual(p.STEP,'b12-toddy-installer-8')
+   self.assertTrue(p.INSTALL.endswith('install8.sh'))
+   self.assertTrue(p.CHECK.endswith('check8.sh'))
   finally:p.configure(4)
 
  def test_generation7_previous_success_checks_actual_generation6_recipe(self):

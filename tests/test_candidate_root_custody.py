@@ -28,6 +28,17 @@ class CandidateArchiveTests(unittest.TestCase):
             self.assertIn('custody-mvp-live-failed3-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
         finally:
             guest.configure('offline');host.configure('offline')
+
+    def test_failed_live4_is_distinct_from_the_next_candidate(self):
+        guest.configure('mvp-live-failed4');host.configure('mvp-live-failed4')
+        try:
+            self.assertEqual(guest.WORK.name,'toddy-mvp-live-image-4')
+            self.assertEqual(guest.INPUTS.name,'toddy-mvp-live-native-inputs-2')
+            self.assertEqual(host.CONTEXT.name,'mvp-live-failed4-candidate-root-custody-4')
+            self.assertNotEqual(guest.PROFILES['mvp-live'][0],guest.PROFILES['mvp-live-failed4'][0])
+            self.assertIn('custody-mvp-live-failed4-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
+        finally:
+            guest.configure('offline');host.configure('offline')
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.parent=Path(self.temp.name);self.root=self.parent/'root';self.root.mkdir()
         file=self.root/'a';file.write_bytes(b'public source fixture');file.chmod(0o6755);os.utime(file,ns=(1700000000123456789,1700000000123456789))
@@ -216,10 +227,10 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
             with self.subTest(profile=name):
                 guest.configure(name);host.configure(name)
-                generation=4 if name=='mvp-live' else 1
+                generation=5 if name=='mvp-live' else 1
                 self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+f'-image-{generation}/root'))
                 self.assertEqual(guest.FINAL_ROOT.name,name+'-root-2')
-                self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer-native-inputs' if kind=='offline' else 'live-native-inputs-2'))
+                self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer-native-inputs' if kind=='offline' else 'live-native-inputs-3'))
                 self.assertIn(' custody-'+name+'-inspect',host.command('inspect')[-1])
                 self.assertEqual(host.ARCHIVE_NAME,name+f'-candidate{generation}-root.tar.gz')
         with self.assertRaises(ValueError):guest.configure('mvp-arbitrary')

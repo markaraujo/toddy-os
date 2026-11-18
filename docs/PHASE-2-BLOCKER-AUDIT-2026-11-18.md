@@ -2,6 +2,10 @@
 
 Scope: local MVP graphical preview and its path to the accepted installed release. This is an execution audit, not B06/G2 acceptance. The Candidate VM is cold; both candidate qcow2 files passed `qemu-img check` after the read-only probes.
 
+## Execution update on 2026-11-18
+
+The Candidate VM was started after this read-only audit. Installer7, projection4, signed export6 and fresh inputs2 passed. Generation3's uncertain root was archived with full host readback before retirement. Generation4 then unpacked but stopped at the HWDB native cache command; its root and write-once failure record remain. A disposable matrix found five cache byte divergences. The five-cache/installer8 route is in source review, and host space is below the conservative admission for archiving generation4. See [generation4 evidence](evidence/B06-generation4.md) and [process improvements](PHASE-2-PROCESS-IMPROVEMENTS-2026-11-18.md). Historical recommendations below describe the original audit and are superseded by this actual update where they differ.
+
 ## Confirmed blockers and corrections, in dependency order
 
 | Priority | Confirmed blocker | Correction and required proof |

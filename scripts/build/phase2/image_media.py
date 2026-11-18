@@ -52,7 +52,7 @@ def configure_mvp(installer=False):
     COMPRESSION=STAGE/'toddy-mvp-live-compression-1'
     INITRAMFS=STAGE/'toddy-mvp-live-initramfs-1'
     MEDIA=STAGE/'toddy-mvp-release-media-1'
-    PROJECTION=STAGE/'toddy-mvp-image-projection-4/live-projection.json'
+    PROJECTION=STAGE/'toddy-mvp-image-projection-5/live-projection.json'
     if installer:
         JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence-installer/assembly.json'
         COMPRESSION=STAGE/'toddy-mvp-live-installer-compression-1'
@@ -160,7 +160,7 @@ def live_identity():
     if (value['producer_sha256']!=p.digest(source) or value['unit_sha256']!=p.digest(unit) or
             value['profile_source_sha256']!=p.digest(HERE/'live_profile.py')):
         raise ValueError('Live image class source/unit custody differs')
-    inputs=STAGE/('toddy-mvp-live-native-inputs-2' if MVP else 'toddy-live-native-inputs')
+    inputs=STAGE/('toddy-mvp-live-native-inputs-3' if MVP else 'toddy-live-native-inputs')
     manifest=initramfs_input.physical(TARGET,inputs/'payload/manifest.json')
     policy=initramfs_input.physical(TARGET,inputs/'policy.json')
     expected=live_profile.media_identity(p.digest(manifest),p.digest(policy))

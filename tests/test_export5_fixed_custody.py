@@ -15,11 +15,14 @@ class Export5Tests(unittest.TestCase):
   self.assertEqual(paths[2].name,'toddy-export5-public-verification-1')
   self.assertEqual(native.fixed_paths(),(native.EXPORT,native.RECEIPT,native.RUN))
   self.assertEqual(host.fixed_context(),host.CONTEXT);self.assertEqual(collect.fixed_paths(),(collect.SOURCE,collect.DESTINATION))
-  for value in (3,7,'5'):
+  for value in (3,8,'5'):
    with self.assertRaises(ValueError):native.fixed_paths(value)
   self.assertEqual(collect.fixed_paths(6),('/mnt/lfs/sources/stage/toddy-package-export-6',ROOT/'.local/phase2/mvp-package-export-6'))
   self.assertEqual(host.fixed_context(6),ROOT/'.local/phase2/mvp-package-export-6')
   self.assertEqual(native.fixed_paths(6)[0].name,'toddy-package-export-6')
+  self.assertEqual(collect.fixed_paths(7),('/mnt/lfs/sources/stage/toddy-package-export-7',ROOT/'.local/phase2/mvp-package-export-7'))
+  self.assertEqual(host.fixed_context(7),ROOT/'.local/phase2/mvp-package-export-7')
+  self.assertEqual(native.fixed_paths(7)[0].name,'toddy-package-export-7')
  def test_export5_failure_restores_export3_and_stream_globals(self):
   before=(native.base.EXPORT,native.base.RECEIPT,native.base.RUN,native.base.verify_command,native.base.save,native.stream.RUN)
   def fail(raw):

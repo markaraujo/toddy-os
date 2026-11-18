@@ -16,8 +16,12 @@ class PackagedCachePreservationTests(unittest.TestCase):
         self.assertTrue(packaged_cache_profile('/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache','/usr/bin/gdk-pixbuf-query-loaders'))
         self.assertTrue(packaged_cache_profile('/usr/lib/gtk-3.0/3.0.0/immodules.cache','/usr/bin/gtk-query-immodules-3.0'))
         self.assertTrue(packaged_cache_profile('/usr/lib/modules/7.1.8-toddy/modules.dep','/usr/bin/kmod'))
+        self.assertTrue(packaged_cache_profile('/usr/lib/udev/hwdb.bin','/usr/bin/systemd-hwdb'))
+        self.assertTrue(packaged_cache_profile('/usr/share/icons/hicolor/icon-theme.cache','/usr/bin/gtk4-update-icon-cache'))
+        self.assertTrue(packaged_cache_profile('/usr/share/mime/mime.cache','/usr/bin/update-mime-database'))
+        self.assertFalse(packaged_cache_profile('/usr/share/icons/Adwaita/icon-theme.cache','/usr/bin/gtk4-update-icon-cache'))
         self.assertFalse(packaged_cache_profile('/usr/lib/modules/7.1.8-toddy/modules.dep','/usr/bin/other'))
-        self.assertFalse(packaged_cache_profile('/usr/share/mime/mime.cache','/usr/bin/update-mime-database'))
+        self.assertFalse(packaged_cache_profile('/usr/share/mime/mime.cache','/usr/bin/other'))
 
     def test_exact_owned_output_is_required_before_preservation(self):
         virtual='/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache';data=b'selected package cache\n'

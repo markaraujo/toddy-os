@@ -77,6 +77,9 @@ def packaged_cache_profile(path,tool):
     """Fixed package-owned outputs whose native rewrite changes selected bytes."""
     return (path=='/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache' and tool=='/usr/bin/gdk-pixbuf-query-loaders' or
             path=='/usr/lib/gtk-3.0/3.0.0/immodules.cache' and tool=='/usr/bin/gtk-query-immodules-3.0' or
+            path=='/usr/lib/udev/hwdb.bin' and tool=='/usr/bin/systemd-hwdb' or
+            path=='/usr/share/icons/hicolor/icon-theme.cache' and tool=='/usr/bin/gtk4-update-icon-cache' or
+            path=='/usr/share/mime/mime.cache' and tool=='/usr/bin/update-mime-database' or
             path.startswith('/usr/lib/modules/7.1.8-toddy/modules.') and tool=='/usr/bin/kmod')
 
 

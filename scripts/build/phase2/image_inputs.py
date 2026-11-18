@@ -13,14 +13,14 @@ from runtime.installer.composition import secured,validate_policy
 TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
 PROJECTION=STAGE/'toddy-image-projection-2'
 EXPORT=STAGE/'toddy-package-export-2'
-MVP_EXPORT=STAGE/'toddy-package-export-6'
+MVP_EXPORT=STAGE/'toddy-package-export-7'
 
 def signed_export(kind):
     if kind not in ('base','live','mvp-base','mvp-live'):raise ValueError('Fixed image delivery profile required')
     return MVP_EXPORT if kind.startswith('mvp-') else EXPORT
 RECORDS=Path('/var/log/toddy/packages');ARCHIVES=Path('/var/cache/toddy/packages')
 OUTPUT={'base':STAGE/'toddy-installer-native-inputs','live':STAGE/'toddy-live-native-inputs',
-        'mvp-base':STAGE/'toddy-mvp-installer-native-inputs','mvp-live':STAGE/'toddy-mvp-live-native-inputs-2'}
+        'mvp-base':STAGE/'toddy-mvp-installer-native-inputs','mvp-live':STAGE/'toddy-mvp-live-native-inputs-3'}
 MVP_CLASS='phase2-mvp-preinstalled-v1'
 EPOCH=1794787200
 DENIED={'lfs','tester','builder','toddy','toddy-live','toddy-build','toddybuild'}
@@ -28,7 +28,7 @@ DENIED={'lfs','tester','builder','toddy','toddy-live','toddy-build','toddybuild'
 def selection(kind):
     if kind not in OUTPUT:raise ValueError('Fixed base/live input profile required')
     mvp=kind.startswith('mvp-');base_kind=kind.removeprefix('mvp-')
-    directory=STAGE/'toddy-mvp-image-projection-4' if mvp else PROJECTION
+    directory=STAGE/'toddy-mvp-image-projection-5' if mvp else PROJECTION
     profile=directory/('profile.json' if base_kind=='base' else 'live-profile.json')
     policy=p.strict(secured(profile).read_bytes())
     if mvp:

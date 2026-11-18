@@ -1,5 +1,24 @@
 # Phase 2 continuation card
 
+## Current stop after generation 4 (2026-11-18)
+
+Installer7/version5, projection4, signed export6, native public verification and
+fresh live inputs2 passed. Generation3's uncertain root was fully archived and
+retired only after complete private host proof; its journal remains. Generation4
+unpacked 329 packages but resource qualification stopped at `systemd-hwdb update
+--usr`. Its root, intent and write-once `resource-command-failure.json` are
+preserved; there is no candidate resource receipt, ISO, boot or B06 acceptance.
+The disposable 19-output cache matrix found five divergent package/regenerated
+outputs. See [generation4 evidence](evidence/B06-generation4.md).
+
+The five-cache/installer8, projection5, export7, inputs3 and generation5 route
+is under local test. The host has about 78.7 GB free, below the conservative
+60 GiB MVP floor plus the 14.2 GB upper bound and 512 MiB margin required to
+archive generation4. Do not delete project evidence or retry generation4.
+After at least 5 GiB of additional host space is available, finish the fixed
+archive proof, then execute one fresh generation5. The [process review](PHASE-2-PROCESS-IMPROVEMENTS-2026-11-18.md)
+records changes that would prevent this late discovery pattern.
+
 ## Current stop after generation 3 (2026-11-18)
 
 The [blocker audit](PHASE-2-BLOCKER-AUDIT-2026-11-18.md) is the current
