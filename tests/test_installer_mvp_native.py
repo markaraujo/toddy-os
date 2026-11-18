@@ -41,7 +41,7 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.SOURCE.name,'toddy-installer-0.2.0-5');self.assertTrue(p.INSTALL.endswith('install5.sh'))
    with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy3')
    self.assertEqual((p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION),original)
-   for invalid in (3,9,'5'):
+   for invalid in (3,10,'5'):
     with self.assertRaises(ValueError):p.configure(invalid)
   finally:p.configure(4)
 
@@ -79,6 +79,16 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.STEP,'b12-toddy-installer-8')
    self.assertTrue(p.INSTALL.endswith('install8.sh'))
    self.assertTrue(p.CHECK.endswith('check8.sh'))
+  finally:p.configure(4)
+
+ def test_generation9_uses_fresh_version_and_exact_previous8(self):
+  try:
+   p.configure(9)
+   self.assertEqual(p.VERSION,'0.2.0-1+toddy7')
+   self.assertEqual(p.BASELINE_VERSION,'0.2.0-1+toddy6')
+   self.assertEqual(p.STEP,'b12-toddy-installer-9')
+   self.assertTrue(p.INSTALL.endswith('install9.sh'))
+   self.assertTrue(p.CHECK.endswith('check9.sh'))
   finally:p.configure(4)
 
  def test_generation7_previous_success_checks_actual_generation6_recipe(self):

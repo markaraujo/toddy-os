@@ -21,11 +21,11 @@ MANIFEST='usr/share/doc/toddy-installer/source-manifest.json'
 
 def configure(generation):
     global GENERATION,VERSION,STEP,BASELINE_VERSION,SOURCE,WORK,STAGE,PREPARED,RECEIPT,POSTCHECK_HOME,INSTALL,CHECK,OWN,REUSE_DOC
-    if type(generation) is not int or generation not in (4,5,6,7,8):raise ValueError('Only fixed installer4/5/6/7/8 generation')
+    if type(generation) is not int or generation not in (4,5,6,7,8,9):raise ValueError('Only fixed installer4/5/6/7/8/9 generation')
     GENERATION=generation
     suffix='' if generation==4 else str(generation)
-    VERSION={4:'0.2.0-1+toddy2',5:'0.2.0-1+toddy3',6:'0.2.0-1+toddy4',7:'0.2.0-1+toddy5',8:'0.2.0-1+toddy6'}[generation]
-    BASELINE_VERSION={4:'0.2.0-1+toddy1',5:'0.2.0-1+toddy2',6:'0.2.0-1+toddy3',7:'0.2.0-1+toddy4',8:'0.2.0-1+toddy5'}[generation]
+    VERSION={4:'0.2.0-1+toddy2',5:'0.2.0-1+toddy3',6:'0.2.0-1+toddy4',7:'0.2.0-1+toddy5',8:'0.2.0-1+toddy6',9:'0.2.0-1+toddy7'}[generation]
+    BASELINE_VERSION={4:'0.2.0-1+toddy1',5:'0.2.0-1+toddy2',6:'0.2.0-1+toddy3',7:'0.2.0-1+toddy4',8:'0.2.0-1+toddy5',9:'0.2.0-1+toddy6'}[generation]
     STEP='b12-toddy-installer-'+str(generation)
     SOURCE=TARGET/('sources/phase2/inputs/toddy-installer-0.2.0-'+str(generation))
     WORK=TARGET/('sources/phase2/work/toddy-installer-'+str(generation));STAGE=TARGET/('sources/stage/phase2-toddy-installer-'+str(generation))
@@ -246,8 +246,8 @@ def postcheck():
         'root_wayland_gui':'pending distinct actual GUI proof','disk_writes':False,'version':VERSION})
 
 def main():
-    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck'],['prepare5'],['qualify5'],['install5'],['postcheck5'],['prepare6'],['qualify6'],['install6'],['postcheck6'],['prepare7'],['qualify7'],['install7'],['postcheck7'],['prepare8'],['qualify8'],['install8'],['postcheck8']):raise ValueError('Installer4 fixed root coordinator action')
-    if sys.argv[1].endswith(('5','6','7','8')):configure(int(sys.argv[1][-1]));sys.argv[1]=sys.argv[1][:-1]
+    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck'],['prepare5'],['qualify5'],['install5'],['postcheck5'],['prepare6'],['qualify6'],['install6'],['postcheck6'],['prepare7'],['qualify7'],['install7'],['postcheck7'],['prepare8'],['qualify8'],['install8'],['postcheck8'],['prepare9'],['qualify9'],['install9'],['postcheck9']):raise ValueError('Installer4 fixed root coordinator action')
+    if sys.argv[1].endswith(('5','6','7','8','9')):configure(int(sys.argv[1][-1]));sys.argv[1]=sys.argv[1][:-1]
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     if sys.argv[1] in ('prepare','qualify'):
         fd=os.open(BUILD/'build.lock',os.O_RDWR|os.O_NOFOLLOW)
