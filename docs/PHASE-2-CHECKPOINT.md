@@ -23,8 +23,24 @@ actual finalization/live receipt. Any divergent result stops this cut without
 another generation. Measure compression/initramfs/ISO gates from actual inputs
 before each write. Private logs: `.local/phase2/b06-generation8/`.
 
-Next: finish committed-source admission and disposable source coherence, then
-perform the single fresh unpack only if every gate passes.
+Generation8 now passed unpack0 (329 packages), resource0 (19 caches/zero blockers),
+independent complete-image review (150,280 entries, SHAfcdd7074...), actual
+finalization0 (9/9 checks) and live0 with its own receipt/journal. The same
+root inode was retained. Independent finalizer/live receipt review passed.
+Actual live dconf is root:root0644, SHAb7afc383..., with all three native values
+correct and no IBus database. Final media snapshot has150,294 entries (including
+ACL sidecar), measured expanded bound6,837,329,920 bytes. Compression admission
+requires33,002,012,672 bytes; measured guest free34,926,219,264 gives
+1,924,206,592 bytes margin. Host free116,109,500,416 exceeds its conservative
+81,320,394,752-byte admission including temporary floor and qcow metadata margin.
+
+Next: dispatch media-mvp-compress ONCE to the verified absent compression1 slot.
+It performs native compression, strict extraction, ACL restoration and full
+comparison under the guest lock. Keep2CPU/256MiB native compression settings;
+monitor healthy work, never restart. Native step timeout7200s; each step log is
+in target sources/stage/toddy-mvp-live-compression-1. After actual success,
+measure initramfs and ISO gates independently before their one-time writes.
+No ISO or actual boot is yet established.
 
 ## Current bounded stop after live stage generation 7 (2026-11-18)
 
