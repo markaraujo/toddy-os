@@ -1,5 +1,8 @@
 """Exact generated optional catalog provenance; no empty-source general exemption."""
 from pathlib import Path
+import grp
+import os
+import stat
 import sys
 
 sys.dont_write_bytecode = True
@@ -52,7 +55,7 @@ def export_attestation(component, record):
         'scope': 'Actual builder audit-validated data/source export; no GUI/PTT/device/release acceptance'}
 
 
-def verify_catalog_provenance(component, record, *, repository, target):
+def _verify_catalog_provenance(component, record, *, repository, target):
     # This verifier needs the designated builder's retained native evidence.
     # An extracted archive or a self-declared qualification.json cannot qualify it.
     if Path(repository).resolve() != bridge.R or Path(target).resolve() != bridge.T:
@@ -98,3 +101,30 @@ def verify_catalog_provenance(component, record, *, repository, target):
         expected[DOC + name] = bridge.R / relative
     verify_owned(record, expected, bridge.T)
     return 'owned-audited-native-voice-catalog-v1'
+
+
+def verify_catalog_provenance(component, record, *, repository, target):
+    """Run the frozen voice proof under a restrictive Ubuntu log-parent mode.
+
+    The native2 voice verifier predates Ubuntu's root:syslog 0775 /var/log.
+    Its exact source hash is part of retained evidence, so do not edit it.
+    This metadata-only check runs after the caller's target guard, restores the
+    original mode even on verification failure, and never changes Toddy logs.
+    """
+    if Path(repository).resolve() != bridge.R or Path(target).resolve() != bridge.T:
+        raise ValueError('Generated catalog requires actual designated-builder evidence')
+    if (component['name'], component['version'], component['architecture']) != (bridge.PACKAGE, bridge.VERSION, 'all'):
+        raise ValueError('Exact generated catalog identity required')
+    parent = Path('/var/log')
+    info = parent.lstat()
+    if (not stat.S_ISDIR(info.st_mode) or info.st_uid != 0 or
+            info.st_gid != grp.getgrnam('syslog').gr_gid or
+            stat.S_IMODE(info.st_mode) != 0o775):
+        raise ValueError('Exact Ubuntu log parent required for frozen voice proof')
+    os.chmod(parent, 0o755)
+    try:
+        return _verify_catalog_provenance(component, record, repository=repository, target=target)
+    finally:
+        if parent.lstat().st_ino != info.st_ino:
+            raise ValueError('Log parent inode changed during voice proof')
+        os.chmod(parent, 0o775)
