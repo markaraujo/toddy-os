@@ -7,7 +7,7 @@ HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE))
 import stage_package_export3_signatures as first
 
 def main(generation=4):
-    if type(generation) is not int or generation not in (4,5,6,7):raise ValueError('Only fixed export4/export5/export6/export7 entry')
+    if type(generation) is not int or generation not in (4,5,6,7,8):raise ValueError('Only fixed export4/export5/export6/export7/export8 entry')
     if sys.argv[1:]:raise SystemExit('No arbitrary path/action/signing-context arguments')
     context=first.fixed_context(generation);output=context/'native-signatures-verified.json'
     if os.path.lexists(output):raise ValueError('Preserve existing export4 result; no replay')

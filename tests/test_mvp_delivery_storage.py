@@ -24,7 +24,7 @@ class MVPHostStorageTests(unittest.TestCase):
     self.assertTrue(installed.capacity_stop_required(floor+installed.STOP_HEADROOM-1))
  def test_transfers_default_standard_and_later_explicit_mvp(self):
   source=(ROOT/'scripts/host/collect_package_export2.py').read_text()
-  self.assertIn('host_floor(generation in (3,4,5,6,7))',source)
+  self.assertIn('host_floor(generation in (3,4,5,6,7,8))',source)
   self.assertEqual(installed.HOST_FLOOR,storage.STANDARD_HOST_FLOOR)
   self.assertEqual(live.HOST_FLOOR,storage.STANDARD_HOST_FLOOR)
 if __name__=='__main__':unittest.main()

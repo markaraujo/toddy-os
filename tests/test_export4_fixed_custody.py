@@ -13,7 +13,7 @@ class Export4Tests(unittest.TestCase):
   self.assertEqual(collector.fixed_paths(4)[1],ROOT/'.local/phase2/mvp-package-export-4')
   self.assertEqual(host.fixed_context(4),ROOT/'.local/phase2/mvp-package-export-4')
   self.assertEqual(collector.fixed_paths(),before[:2]);self.assertEqual(host.fixed_context(),before[2])
-  for value in (2,8,'4'):
+  for value in (2,9,'4'):
    with self.assertRaises(ValueError):host.fixed_context(value)
   self.assertEqual((collector.SOURCE,collector.DESTINATION,host.CONTEXT,host.ASSETS),before)
  def test_native_failure_restores_all_export3_primitives(self):

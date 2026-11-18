@@ -69,7 +69,7 @@ else:raise ValueError('fixed action')
 
 
 def fixed_paths(generation=2):
-    if type(generation) is not int or generation not in (2,3,4,5,6,7):raise ValueError('Only fixed export2/export3/export4/export5/export6/export7 generations')
+    if type(generation) is not int or generation not in (2,3,4,5,6,7,8):raise ValueError('Only fixed export2/export3/export4/export5/export6/export7/export8 generations')
     return (SOURCE,DESTINATION) if generation==2 else ('/mnt/lfs/sources/stage/toddy-package-export-'+str(generation),ROOT/('.local/phase2/mvp-package-export-'+str(generation)))
 
 
@@ -103,7 +103,7 @@ def transfer(generation=2):
     parent = destination.parent
     if parent.resolve() != parent or not parent.is_dir() or parent.stat().st_uid != os.getuid() or os.path.lexists(destination):
         raise ValueError('New canonical private host destination required')
-    if shutil.disk_usage(parent).free < host_floor(generation in (3,4,5,6,7)) + sum(row['bytes'] for row in rows.values()) + 1024**2:
+    if shutil.disk_usage(parent).free < host_floor(generation in (3,4,5,6,7,8)) + sum(row['bytes'] for row in rows.values()) + 1024**2:
         raise ValueError('Preserve selected fixed host reserve plus transfer bytes')
     os.umask(0o077)
     destination.mkdir(mode=0o700)

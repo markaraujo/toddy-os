@@ -169,7 +169,7 @@ def stage(assembly,manifest,policy,media_id,system):
     system.require_root();assembly.recheck();p=payload_module();root=Path(assembly.root);work=Path(assembly.work)
     mvp=manifest.get('delivery_class')=='phase2-mvp-preinstalled-v1'
     expected_work=Path('/sources/stage/toddy-mvp-live-image-2') if mvp else WORK
-    generated_input=Path('/sources/stage/toddy-mvp-live-native-inputs-3/generated-entries.json') if mvp else GENERATED_INPUT
+    generated_input=Path('/sources/stage/toddy-mvp-live-native-inputs-4/generated-entries.json') if mvp else GENERATED_INPUT
     if mvp and manifest.get('g2_eligible') is not False:raise ValueError('MVP live profile cannot be G2 eligible')
     if work!=expected_work or root.parent!=work or root.resolve()!=root:raise ValueError('Live profile requires fixed reviewed generation2')
     intent=work/'live-profile-intent.json'

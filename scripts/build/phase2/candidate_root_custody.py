@@ -18,7 +18,7 @@ from image_assemble import unclosed_compiler_jobs,ReviewedInputs
 PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-root-2','toddy-installer-native-inputs'),
           'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs'),
           'mvp-offline':('toddy-mvp-offline-image-1','toddy-mvp-offline-image-2','mvp-offline-root-2','toddy-mvp-installer-native-inputs'),
-          'mvp-live':('toddy-mvp-live-image-5','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-3'),
+          'mvp-live':('toddy-mvp-live-image-6','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-4'),
           'mvp-live-failed3':('toddy-mvp-live-image-3','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs'),
           'mvp-live-failed4':('toddy-mvp-live-image-4','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-2'),
           'mvp-live-failed5':('toddy-mvp-live-image-5','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-3')}

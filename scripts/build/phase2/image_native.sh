@@ -4,7 +4,7 @@ set -euo pipefail
 [[ $(id -u) == 0 && $# == 1 ]]
 case $1 in
     recover-qualify-mvp-live-accounts|recover-qualify-mvp-live-directories|adopt-finalize-mvp-base|adopt-finalize-mvp-live|base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live|media-compress|media-initramfs|media-iso|mvp-base|mvp-live|qualify-mvp-base|qualify-mvp-live|finalize-mvp-base|finalize-mvp-live|stage-mvp-live|media-mvp-compress|media-mvp-initramfs|media-mvp-iso|media-mvp-installer-compress|media-mvp-installer-initramfs|media-mvp-installer-iso) ;;
-    seal-mvp-installer|embed-mvp-installer|signatures-export3|signatures-export3-reconcile2|signatures-export4|signatures-export5|signatures-export6|signatures-export7) ;;
+    seal-mvp-installer|embed-mvp-installer|signatures-export3|signatures-export3-reconcile2|signatures-export4|signatures-export5|signatures-export6|signatures-export7|signatures-export8) ;;
     inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare|inputs-mvp-base-requirements|inputs-mvp-live-requirements|inputs-mvp-base-prepare|inputs-mvp-live-prepare) ;;
     custody-h10-expanded-inspect|custody-h10-expanded-export|custody-h10-expanded-receipt|custody-h10-expanded-metadata|custody-h10-expanded-retire|custody-h11-expanded-inspect|custody-h11-expanded-export|custody-h11-expanded-receipt|custody-h11-expanded-metadata|custody-h11-expanded-retire|custody-mvp-offline-inspect|custody-mvp-offline-export|custody-mvp-offline-receipt|custody-mvp-offline-metadata|custody-mvp-offline-retire|custody-mvp-live-inspect|custody-mvp-live-export|custody-mvp-live-receipt|custody-mvp-live-metadata|custody-mvp-live-retire|custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
     custody-mvp-live-failed3-inspect|custody-mvp-live-failed3-export|custody-mvp-live-failed3-receipt|custody-mvp-live-failed3-metadata|custody-mvp-live-failed3-retire) ;;
@@ -118,6 +118,8 @@ case $1 in
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/image_inputs.py "$operation" "$kind" 8<&- ;;
     signatures-export7)
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/export7_public_signatures.py <&8 8<&- ;;
+    signatures-export8)
+        /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/export8_public_signatures.py <&8 8<&- ;;
     signatures-export6)
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/export6_public_signatures.py <&8 8<&- ;;
     signatures-export5)
