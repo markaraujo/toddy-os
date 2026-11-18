@@ -16,23 +16,30 @@ and journals remain untouched. See [generation7 evidence](evidence/B06-generatio
 
 The source now normalizes that exact root-owned, single-link dconf output mode
 and records bounded failure details. A disposable overlay verified the targeted
-compile and mode correction without changing the retained root. The two live
-stage corrections have failed in this slice, so do not run a third generation
-or replay either stage intent now. A fresh, separately bounded slice must first
-preserve generation7's partial root, measure the full media capacity bound, and
-prove enough guest space before any new image write. The Candidate VM is running
-for read-only diagnosis. No ISO, graphical boot, installation or B06/G2
+compile and mode correction without changing the retained root. Generation7's
+partial root has since been completely archived and independently verified at
+`.local/phase2/mvp-live-stage7-candidate-root-custody-7/` before exact guest
+retirement (6,183,923,712 guest bytes recovered); its stage intent and journals
+remain. The two live-stage corrections failed in this slice, so do not run a
+third generation or replay either stage intent now. The Candidate VM remains
+running for read-only checks. No ISO, graphical boot, installation or B06/G2
 acceptance has been established.
 
 The read-only media preflight measured an expanded snapshot bound of
 6,837,325,824 bytes. Compression admission requires 33,002,004,480 guest bytes
 free (16 GiB reserve + twice that bound + 2 GiB), while the partial generation7
-state had 20,229,652,480 bytes free: a 12,772,352,000-byte deficit. A fresh
-root would consume additional space after retiring the partial one, so do not
-infer capacity from the archival gain alone. Qualify old export/input guest
-copies against retained host bytes or grow only the designated candidate target
-under a separately reviewed geometry route. Do not delete accepted backings,
-the offline root, or historical media to satisfy this check.
+state had 20,229,652,480 bytes free: a 12,772,352,000-byte deficit. Complete
+host custody and byte/metadata proof now cover failed root1, stage7 root, old
+guest exports2/3/4/7 and old input bundles2/3; only those verified guest copies
+were retired. Inputs4 and signed export8 remain. The latest guest free count is
+41,193,058,304 bytes. A similarly sized new root would consume about
+6,183,923,712 bytes and leave approximately 35,009,134,592 bytes, roughly
+2,007,130,112 above the *measured compression gate only*. The ISO gate depends
+on actual compressed and initramfs sizes and must be measured before media
+creation. The host has 116,120,948,736 free bytes, above ADR-0251's temporary
+local MVP floor. Recheck both free counts, root bounds, exact source/receipt
+identity and ISO capacity in the next separately bounded slice. Do not delete
+accepted backings, the offline root or historical media to satisfy a gate.
 
 ## Current stop after generation 5 (2026-11-18)
 

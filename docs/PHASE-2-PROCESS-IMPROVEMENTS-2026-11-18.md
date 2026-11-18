@@ -16,11 +16,13 @@ not only command exit or file presence. `live_profile.stage()` now prepares a
 bounded write-once failure receipt containing unexpected paths or output
 metadata. Keep failed intent and root untouched.
 
-The immediate next slice is bounded: archive the partial generation7 root with
-complete proof; calculate the actual compression/ISO free-space requirement;
-retire only old guest copies whose host bytes are already verified; test the
-corrected targeted dconf mode in a disposable overlay; create one fresh image
-generation. Stop if any prerequisite or stage result differs. Use parallel
+Complete host proof now covers the partial generation7 root, obsolete guest
+exports2/3/4/7 and obsolete input bundles2/3; those guest copies have been
+retired. The targeted dconf mode correction passed in a disposable overlay.
+The immediate next slice is bounded: recheck current capacity and immutable
+source/inputs; create one fresh image generation; measure the ISO gate from the
+actual compression and initramfs artifacts before its write. Stop if any
+prerequisite or stage result differs. Use parallel
 subagents for independent source, capacity and documentation review, with one
 coordinator and one guest writer. An ISO file is a local preview artifact until
 its boot and installer behavior are measured; B06, B12 and G2 retain their own
