@@ -18,6 +18,16 @@ def native_fixture_tar(root):
 
 
 class CandidateArchiveTests(unittest.TestCase):
+    def test_failed_live1_is_archived_only_with_its_recovery_journals(self):
+        guest.configure('mvp-live-failed1');host.configure('mvp-live-failed1')
+        try:
+            self.assertEqual(guest.WORK.name,'toddy-mvp-live-image-1')
+            self.assertEqual(guest.INPUTS.name,'toddy-mvp-live-native-inputs')
+            self.assertEqual(host.CONTEXT.name,'mvp-live-failed1-candidate-root-custody-1')
+            self.assertIn('custody-mvp-live-failed1-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
+        finally:
+            guest.configure('offline');host.configure('offline')
+
     def test_failed_live3_is_a_distinct_fixed_archival_profile(self):
         guest.configure('mvp-live-failed3');host.configure('mvp-live-failed3')
         try:

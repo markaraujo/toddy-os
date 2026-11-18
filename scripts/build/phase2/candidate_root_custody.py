@@ -19,6 +19,7 @@ PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-ro
           'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs'),
           'mvp-offline':('toddy-mvp-offline-image-1','toddy-mvp-offline-image-2','mvp-offline-root-2','toddy-mvp-installer-native-inputs'),
           'mvp-live':('toddy-mvp-live-image-7','toddy-mvp-live-image-7-reviewed','mvp-live-root-2','toddy-mvp-live-native-inputs-4'),
+          'mvp-live-failed1':('toddy-mvp-live-image-1','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs'),
           'mvp-live-failed3':('toddy-mvp-live-image-3','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs'),
           'mvp-live-failed4':('toddy-mvp-live-image-4','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-2'),
           'mvp-live-failed5':('toddy-mvp-live-image-5','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-3')}
@@ -201,7 +202,7 @@ def eligible():
     """Fixed workflow boundary; full archive metadata proof remains separate."""
     if PROFILE in HISTORICAL:return historical_eligible()
     if PROFILE in ('mvp-live-stage6','mvp-live-stage7'):return failed_stage_eligible()
-    if PROFILE in ('mvp-live-failed3','mvp-live-failed4','mvp-live-failed5'):return failed_live_eligible()
+    if PROFILE in ('mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5'):return failed_live_eligible()
     p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
     pin=[root.st_dev,work.st_ino,root.st_ino]
     unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json')
@@ -270,6 +271,8 @@ def failed_live_eligible():
             resource.get('root_device')!=root.st_dev or resource.get('root_inode')!=root.st_ino or
             resource.get('manifest_sha256')!=unpack['manifest_sha256'] or
             resource.get('production_ready') is not False or
+            (PROFILE=='mvp-live-failed1' and not all((WORK/name).is_file() for name in (
+                'resource-directory-recovery-intent.json','resource-account-recovery-intent2.json'))) or
             (PROFILE=='mvp-live-failed4' and not (WORK/'resource-command-failure.json').is_file()) or
             (PROFILE!='mvp-live-failed5' and any(os.path.lexists(WORK/name) for name in ('candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json')))):
         raise ValueError('candidate_root_custody_exact_uncertain_live_required')
@@ -284,6 +287,8 @@ def failed_live_eligible():
             raise ValueError('candidate_root_custody_exact_blocked_live5_required')
     paths=[WORK/name for name in ('unpacked.json','unpack-intent.json','resource-intent.json','dpkg.log')]
     if (WORK/'resource-command-failure.json').exists():paths.append(WORK/'resource-command-failure.json')
+    if PROFILE=='mvp-live-failed1':paths.extend(WORK/name for name in (
+        'resource-directory-recovery-intent.json','resource-account-recovery-intent2.json'))
     if PROFILE=='mvp-live-failed5':paths.extend(WORK/name for name in ('candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json'))
     paths.extend(INPUTS/name for name in ('input-prepared.json','policy.json','payload/manifest.json'))
     paths.extend((ROOT/'scripts/build/phase2/image_native.sh',ROOT/'scripts/build/phase2/candidate_root_custody.py'))
@@ -437,7 +442,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():
