@@ -47,14 +47,14 @@ RESERVE=16*1024**3
 def configure_mvp(installer=False):
     global IMAGE,JOURNAL,COMPRESSION,INITRAMFS,MEDIA,PROJECTION,MVP
     MVP=True
-    IMAGE=STAGE/'toddy-mvp-live-image-2/mvp-live-root-2'
-    JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence/assembly.json'
+    IMAGE=STAGE/'toddy-mvp-live-image-7-reviewed/mvp-live-root-2'
+    JOURNAL=STAGE/'toddy-mvp-live-image-7-reviewed/evidence/assembly.json'
     COMPRESSION=STAGE/'toddy-mvp-live-compression-1'
     INITRAMFS=STAGE/'toddy-mvp-live-initramfs-1'
     MEDIA=STAGE/'toddy-mvp-release-media-1'
     PROJECTION=STAGE/'toddy-mvp-image-projection-6/live-projection.json'
     if installer:
-        JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence-installer/assembly.json'
+        JOURNAL=STAGE/'toddy-mvp-live-image-7-reviewed/evidence-installer/assembly.json'
         COMPRESSION=STAGE/'toddy-mvp-live-installer-compression-1'
         INITRAMFS=STAGE/'toddy-mvp-live-installer-initramfs-1'
         MEDIA=STAGE/'toddy-mvp-installer-release-media-1'

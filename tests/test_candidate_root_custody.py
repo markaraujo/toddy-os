@@ -247,7 +247,7 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
             with self.subTest(profile=name):
                 guest.configure(name);host.configure(name)
-                generation=6 if name=='mvp-live' else 1
+                generation=7 if name=='mvp-live' else 1
                 self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+f'-image-{generation}/root'))
                 self.assertEqual(guest.FINAL_ROOT.name,name+'-root-2')
                 self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer-native-inputs' if kind=='offline' else 'live-native-inputs-4'))

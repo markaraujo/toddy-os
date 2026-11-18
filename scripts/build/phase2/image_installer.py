@@ -15,7 +15,7 @@ STAGE=Path('/sources/stage')
 INPUTS=STAGE/'toddy-mvp-installer-native-inputs'
 OFFLINE=STAGE/'toddy-mvp-offline-image-2/mvp-offline-root-2'
 SEALED=STAGE/'toddy-mvp-installer-composition-1'
-WORK=STAGE/'toddy-mvp-live-image-2';IMAGE=WORK/'mvp-live-root-2'
+WORK=STAGE/'toddy-mvp-live-image-7-reviewed';IMAGE=WORK/'mvp-live-root-2'
 PREFIX='usr/share/toddy/installer/composition'
 CLASS='phase2-mvp-preinstalled-v1'
 
