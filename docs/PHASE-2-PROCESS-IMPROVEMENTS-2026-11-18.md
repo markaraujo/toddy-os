@@ -9,4 +9,19 @@ The current chain uses exact source hashes and immutable output names, which pro
 5. **Separate proof from acceptance.** Each gate should emit machine-readable input and output hashes, tool identity, exact command, and result. A package/export receipt establishes provenance; B06 still needs a candidate with zero blockers, independent reviewed inputs, finalizer, boot and installation evidence. SLSA defines provenance as the verifiable trail of where, when and how artifacts were produced; it is separate from a claim that the product works. [SLSA provenance](https://slsa.dev/spec/v1.2/provenance/). Reproducible Builds defines byte-for-byte reproducibility against declared source, environment and instructions; Toddy should claim it only after an independent matching rebuild. [Reproducible Builds definition](https://reproducible-builds.org/docs/definition/).
 6. **Use review gates for repository changes.** The current pushes reported bypass of protected `main` and two expected checks. Move future package/boot changes through a small branch and PR with the relevant tests and required status checks; keep the one active native VM coordinator outside CI. GitHub documents protected branches as the mechanism for required reviews and checks. [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches). Artifact attestations can later bind distributable files to a workflow and commit, but they do not replace native boot/install tests. [GitHub artifact attestations](https://docs.github.com/en/actions/concepts/security/artifact-attestations).
 
-The immediate next run is bounded: finish the fixed package8/export7 route, verify host capacity, archive generation4 after complete proof, create generation5 once, and stop on any new resource failure. No earlier root is retried.
+Generation7 exposed two further process gaps. `dconf update` created an
+unreviewed IBus cache, and targeted `dconf compile` produced the right path but
+mode 0600. A disposable probe must check **path set, bytes, owner and mode**,
+not only command exit or file presence. `live_profile.stage()` now prepares a
+bounded write-once failure receipt containing unexpected paths or output
+metadata. Keep failed intent and root untouched.
+
+The immediate next slice is bounded: archive the partial generation7 root with
+complete proof; calculate the actual compression/ISO free-space requirement;
+retire only old guest copies whose host bytes are already verified; test the
+corrected targeted dconf mode in a disposable overlay; create one fresh image
+generation. Stop if any prerequisite or stage result differs. Use parallel
+subagents for independent source, capacity and documentation review, with one
+coordinator and one guest writer. An ISO file is a local preview artifact until
+its boot and installer behavior are measured; B06, B12 and G2 retain their own
+acceptance criteria.

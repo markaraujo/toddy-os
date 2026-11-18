@@ -11,6 +11,7 @@ case $1 in
     custody-mvp-live-failed4-inspect|custody-mvp-live-failed4-export|custody-mvp-live-failed4-receipt|custody-mvp-live-failed4-metadata|custody-mvp-live-failed4-retire) ;;
     custody-mvp-live-failed5-inspect|custody-mvp-live-failed5-export|custody-mvp-live-failed5-receipt|custody-mvp-live-failed5-metadata|custody-mvp-live-failed5-retire) ;;
     custody-mvp-live-stage6-inspect|custody-mvp-live-stage6-export|custody-mvp-live-stage6-receipt|custody-mvp-live-stage6-metadata|custody-mvp-live-stage6-retire) ;;
+    custody-mvp-live-stage7-inspect|custody-mvp-live-stage7-export|custody-mvp-live-stage7-receipt|custody-mvp-live-stage7-metadata|custody-mvp-live-stage7-retire) ;;
     *) exit 2 ;;
 esac
 source /opt/toddy-build/scripts/build/target.sh

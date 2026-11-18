@@ -207,18 +207,39 @@ def stage(assembly,manifest,policy,media_id,system):
     # unrelated IBus database outside this profile's reviewed delta.
     command=['/usr/bin/dconf','compile','/etc/dconf/db/toddy-live','/etc/dconf/db/toddy-live.d']
     system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);assembly.recheck()
+    database_path=root/'etc/dconf/db/toddy-live'
+    database_info=database_path.lstat()
+    if (database_path.parent.resolve()!=database_path.parent or
+            not stat.S_ISREG(database_info.st_mode) or database_info.st_uid or database_info.st_gid or
+            database_info.st_nlink!=1 or database_info.st_dev!=root.stat().st_dev):
+        raise ValueError('Live dconf native output custody differs')
+    descriptor=os.open(database_path,os.O_RDWR|os.O_NOFOLLOW)
+    try:
+        os.fchmod(descriptor,0o644);os.fsync(descriptor)
+    finally:os.close(descriptor)
     after=snapshot(root);allowed=set(files)|set(links)|{'/home/'+LIVE_USER,'/etc/dconf/db/toddy-live'}
     for path in list(allowed):
         parent=Path(path).parent
         while str(parent)!='/':allowed.add(parent.as_posix());parent=parent.parent
     changed={path for path in set(before)|set(after) if before.get(path)!=after.get(path)}
-    if not changed<=allowed or any(path not in after for path in before):raise ValueError('Live native transform changed an unreviewed path')
+    unexpected=sorted(changed-allowed);missing=sorted(set(before)-set(after))
+    if unexpected or missing:
+        save(work/'live-profile-failure.json',{'version':1,'state':'blocked-unreviewed-native-transform',
+            'root_inode':root.stat().st_ino,'source_sha256':p.digest(__file__),'native_command':command,
+            'unexpected_count':len(unexpected),'unexpected_paths':unexpected[:128],
+            'unexpected_paths_sha256':hashlib.sha256(p.encoded(unexpected)).hexdigest(),
+            'missing_count':len(missing),'missing_paths':missing[:128]})
+        raise ValueError('Live native transform changed an unreviewed path')
     for virtual,(data,mode) in files.items():
         expected={'mode':stat.S_IFREG|mode,'uid':0,'gid':0,'sha256':hashlib.sha256(data).hexdigest()}
         if after.get(virtual)!=expected:raise ValueError('Live attributed file readback differs')
     if after.get('/home/'+LIVE_USER)!={'mode':stat.S_IFDIR|0o700,'uid':LIVE_UID,'gid':LIVE_UID,'directory':True}:raise ValueError('Live home attribution differs')
     database=after.get('/etc/dconf/db/toddy-live',{})
-    if database.get('mode')!=stat.S_IFREG|0o644 or database.get('uid')!=0 or database.get('gid')!=0:raise ValueError('Live dconf native output differs')
+    if database.get('mode')!=stat.S_IFREG|0o644 or database.get('uid')!=0 or database.get('gid')!=0:
+        save(work/'live-profile-failure.json',{'version':1,'state':'blocked-native-dconf-output-metadata',
+            'root_inode':root.stat().st_ino,'source_sha256':p.digest(__file__),'native_command':command,
+            'path':'/etc/dconf/db/toddy-live','actual':database})
+        raise ValueError('Live dconf native output differs')
     save(work/'live-image-manifest.json',after)
     result={'version':1,'state':'source-attributed-live-profile-candidate','root':str(root),'assembly_pin':list(assembly.identity()),
         'base_image_manifest_sha256':receipt['image_manifest_sha256'],'live_image_manifest_sha256':p.digest(work/'live-image-manifest.json'),

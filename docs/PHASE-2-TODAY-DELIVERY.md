@@ -4,27 +4,33 @@ Updated: 2026-11-18, America/Sao_Paulo.
 
 The next deliverable is a **local, explicitly interim owner preview** of the
 graphical VM. It is not B13/G2, an installable release, or a public download.
-The MVP live roots `toddy-mvp-live-image-1` and
-`toddy-mvp-live-image-3` now both have uncertain resource operations and remain
-frozen. Generation 3 unpacked 329 packages but qualification failed without a
-receipt. Never replay their intents, copy either root into a future generation,
-or treat partial cache output as acceptance. The first slice is stopped until
-the cache provenance/package chain and a measured new-root capacity path are
-resolved. See the [blocker audit](PHASE-2-BLOCKER-AUDIT-2026-11-18.md).
+Installer9, signed export8, inputs4 and generation7 have passed native package,
+resource and finalizer gates. The live stage is blocked by the 0600 mode of the
+generated Toddy dconf database; its intent and partial root are retained. Earlier
+failed roots have separate verified custody. The current slice is stopped after
+two live-stage corrections. See the [current checkpoint](PHASE-2-CHECKPOINT.md)
+and [generation7 evidence](evidence/B06-generation7.md). The next slice must
+prove media capacity before creating another root, preserve the partial root,
+then attempt one fresh stage with the exact mode correction. No ISO or boot claim
+follows from package/finalizer success.
 
 ## Small verified slices
 
 | Slice | Entry condition | Acceptance and stop condition |
 | --- | --- | --- |
-| 1. Fresh live root | Host/guest capacity measured; existing failed root preserved; reviewed inputs unchanged | New generation unpacks and qualifies resources once. Save actual receipt, package count, root identity, command exit and log. Stop on uncertain postconditions; reconcile before any retry. |
+| 0. Space and source admission | Immutable signed inputs and previous failures retained | Calculate the complete root, compression and ISO storage bound before a new root. Retire only guest copies with byte-for-byte host proof. Run the exact targeted dconf command and mode readback in a disposable overlay. Stop if guest capacity is below the measured gate. |
+| 1. Fresh live root | Slice 0 passed; existing failed root preserved; reviewed inputs unchanged | One new generation unpacks, qualifies, passes independent review, finalizer and live stage. Save actual receipts, package count, root identity, command exits and logs. Stop on uncertain postconditions; never replay an intent. |
 | 2. Graphical local preview | Slice 1 accepted; finalizer and media inputs verified | Boot isolated candidate in QEMU/KVM; capture real login, desktop, Toddy entry, basic text/Stop and failure states. Owner can interact with the isolated VM. Record absent features honestly. |
 | 3. Installed local preview | Slice 2 accepted; blank test disk and installer prerequisites verified | Install to a designated disposable virtual disk, boot twice without ISO, and check persistent user data/settings and target identity. Stop before writes if disk identity differs. |
 | 4. Remaining B stories | Follow `status.json` dependencies and existing acceptance criteria | Implement B06–B12 in small independently checked slices. B07/B10 can proceed when useful without a second guest writer. Do not count untested work as complete. |
 | 5. B13/G2 public delivery | B01–B12 accepted and B13 in progress with final ISO evidence | Use `docs/RELEASES.md` and the Phase 2 handoff utility for immutable artifacts, checksums, source/license inventory, GitHub prerelease and portal verification. Physical hardware remains a separate claim. |
 
-One agent owns all guest/image writes. Independent source or documentation work
-may overlap only when resource and lock budgets permit. There is no fixed worker
-count or calendar deadline for unmeasured build and boot work.
+One agent owns all guest/image writes. Parallel subagents may audit capacity,
+review source/tests and maintain documentation in separate paths. The coordinator
+integrates one reviewed change at a time before syncing source to the guest.
+No subagent starts a second native writer or clears evidence. Set a bounded task,
+expected artifact and stop condition for each agent; avoid a fixed worker count
+or calendar deadline for unmeasured build and boot work.
 
 For each slice, save exact inputs, elapsed time, commands, exit status,
 postconditions, log path and next action in the checkpoint. Apply the bounded

@@ -1,5 +1,39 @@
 # Phase 2 continuation card
 
+## Current bounded stop after live stage generation 7 (2026-11-18)
+
+The owner authorized cleanup of verified unused copies and a separate read-only
+harness audit. Installer9 (`0.2.0-1+toddy7`), projection6, signed export8,
+inputs4, generation6 resource qualification and its independent review passed.
+Generation6 finalization passed, but its live stage wrote an unexpected IBus
+dconf database; the partial reviewed root was completely archived and verified
+before exact retirement. Generation7 then unpacked and qualified 329 packages
+with zero resource blockers, reproduced the same 150,280-entry reviewed image,
+and passed finalization. Its live stage used targeted `dconf compile` and did
+not create the IBus database, but stopped because the generated Toddy live
+database had mode 0600 instead of the required 0644. Its root, stage intent,
+and journals remain untouched. See [generation7 evidence](evidence/B06-generation7.md).
+
+The source now normalizes that exact root-owned, single-link dconf output mode
+and records bounded failure details. A disposable overlay verified the targeted
+compile and mode correction without changing the retained root. The two live
+stage corrections have failed in this slice, so do not run a third generation
+or replay either stage intent now. A fresh, separately bounded slice must first
+preserve generation7's partial root, measure the full media capacity bound, and
+prove enough guest space before any new image write. The Candidate VM is running
+for read-only diagnosis. No ISO, graphical boot, installation or B06/G2
+acceptance has been established.
+
+The read-only media preflight measured an expanded snapshot bound of
+6,837,325,824 bytes. Compression admission requires 33,002,004,480 guest bytes
+free (16 GiB reserve + twice that bound + 2 GiB), while the partial generation7
+state had 20,229,652,480 bytes free: a 12,772,352,000-byte deficit. A fresh
+root would consume additional space after retiring the partial one, so do not
+infer capacity from the archival gain alone. Qualify old export/input guest
+copies against retained host bytes or grow only the designated candidate target
+under a separately reviewed geometry route. Do not delete accepted backings,
+the offline root, or historical media to satisfy this check.
+
 ## Current stop after generation 5 (2026-11-18)
 
 Host free space was rechecked at 108,245,028,864 bytes after the owner cleared a
