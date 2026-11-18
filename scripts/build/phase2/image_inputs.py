@@ -6,7 +6,7 @@ sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[2]
 sys.path[:0]=[str(HERE),str(ROOT)]
 import offline_payload as p
-from image_media import inherited_media_lease
+from image_media import inherited_media_lease,trusted_log_parent
 from runtime.installer.native_finalizer import account_files,cache_command,cache_executables,packaged_cache_profile
 from runtime.installer.installed_boot import module_namespace,InstalledBoot,RELEASE
 from runtime.installer.composition import secured,validate_policy
@@ -41,11 +41,24 @@ def selection(kind):
     if len({row['name'] for row in components})!=len(components):raise ValueError('Image input duplicate component')
     return profile,projection,additions,components
 
+def secured_record(path):
+    """Read a fixed native record under Ubuntu's exact root:syslog log parent."""
+    path=Path(path)
+    if path.parent!=RECORDS or path.resolve()!=path:raise ValueError('Image record redirected')
+    for parent in path.parents:
+        info=parent.lstat()
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or (info.st_mode&0o022 and not trusted_log_parent(parent,info)):
+            raise ValueError('Image record ancestor custody')
+    info=path.lstat()
+    if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or info.st_mode&0o022 or info.st_size>256*1024*1024:
+        raise ValueError('Image record custody')
+    return path
+
 def records_for(components):
     records=[];pins={}
     for row in components:
         stem=row['name']+'_'+row['version']+'_'+row['architecture']
-        path=secured(RECORDS/(stem+'.json'));record=p.strict(path.read_bytes())
+        path=secured_record(RECORDS/(stem+'.json'));record=p.strict(path.read_bytes())
         if p.digest(path)!=row['component_record_sha256'] or record.get('installed') is not True or record.get('archive_sha256')!=row['archive_sha256']:
             raise ValueError('Image input native record differs')
         records.append(record);pins[stem+'.json']=p.digest(path)
