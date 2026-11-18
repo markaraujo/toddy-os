@@ -4,12 +4,14 @@ import copy
 import importlib.util
 import os
 from pathlib import Path
+import stat
 import struct
 import subprocess
 import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts/host'))
 def module(name,path):
@@ -20,6 +22,16 @@ host=module('growth_host_fixture','scripts/host/phase2_candidate_target_grow.py'
 
 
 class GrowthTests(unittest.TestCase):
+    def test_only_exact_ubuntu_syslog_parent_is_allowed(self):
+        mode=stat.S_IFDIR|0o775
+        group=guest.grp.getgrnam('syslog').gr_gid
+        valid=SimpleNamespace(st_uid=0,st_gid=group,st_mode=mode)
+        self.assertTrue(guest.trusted_log_parent(Path('/var/log'),valid))
+        for path,info in ((Path('/var'),valid),
+                          (Path('/var/log'),SimpleNamespace(st_uid=1000,st_gid=group,st_mode=mode)),
+                          (Path('/var/log'),SimpleNamespace(st_uid=0,st_gid=group,st_mode=stat.S_IFDIR|0o777)),
+                          (Path('/var/log'),SimpleNamespace(st_uid=0,st_gid=0,st_mode=mode))):
+            self.assertFalse(guest.trusted_log_parent(path,info))
     def test_exact_growth_preserves_first_three_partitions_and_root_start_uuid(self):
         old=geo.table(geo.OLD);new=geo.table(geo.NEW)
         self.assertEqual(geo.NEW,219043332096);self.assertEqual(geo.NEW-geo.OLD,24*1024**3)

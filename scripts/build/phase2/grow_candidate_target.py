@@ -1,6 +1,7 @@
 """One-shot online growth of the exact disposable candidate target, never host disks."""
 import argparse
 import fcntl
+import grp
 import hashlib
 import json
 import os
@@ -22,6 +23,8 @@ BASE=Path('/var/log/toddy/phase2/candidate-target-growth-1')
 QUALIFIED=BASE.with_name('candidate-target-growth-qualified-1.json')
 MARKER=Path('/var/log/toddy/build/candidate-target-growth-1.running.json')
 TOOLS=('sfdisk','partx','resize2fs','dumpe2fs','blockdev','blkid','findmnt','lsblk')
+ACCEPTED_GROWTH_PINS={'grow_candidate_target.py':'21f025b4e0a3d3de687742b3066a997bde2da10ab309dd37251d3d498d266f9c',
+    'candidate_target_geometry.py':'1e52e8768b325f49920c7120f25f7bf6b663143360db7f410184c2d1f71c050f'}
 
 
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -74,15 +77,29 @@ def gpt(size,backup=False):
     finally:os.close(fd)
 
 
+def trusted_log_parent(path,info):
+    return path==Path('/var/log') and info.st_uid==0 and info.st_gid==grp.getgrnam('syslog').gr_gid and stat.S_IMODE(info.st_mode)==0o775
+
+
 def checked_completed():
     # This small public root-owned receipt is readable by ordinary build guards;
     # complete private raw GPT/snapshot/exit evidence remains separately retained.
     for path in (QUALIFIED,*QUALIFIED.parents):
         info=path.lstat()
-        if stat.S_ISLNK(info.st_mode) or info.st_uid!=0 or info.st_mode&0o022:raise ValueError('Root-owned qualified growth receipt required')
-    if not stat.S_ISREG(QUALIFIED.stat().st_mode) or QUALIFIED.stat().st_size>65536:raise ValueError('Bounded growth receipt required')
-    value=json.loads(QUALIFIED.read_bytes())
-    if value.get('state')!='filesystem-grown-and-full-root-unchanged' or value.get('old_bytes')!=geometry.OLD or value.get('new_bytes')!=geometry.NEW or value.get('producer_pins')!=source_pins() or value.get('full_root_changed_paths')!=0 or MARKER.exists():raise ValueError('Exact completed growth receipt required')
+        if stat.S_ISLNK(info.st_mode) or info.st_uid!=0:raise ValueError('Root-owned qualified growth receipt required')
+        if path==Path('/var/log'):
+            # Ubuntu grants its dedicated syslog group write access here. The
+            # protected Toddy subtree and receipt must still be root-owned and
+            # not group-writable; an attacker cannot forge a root-owned file.
+            if not trusted_log_parent(path,info):raise ValueError('Exact system log parent required')
+        elif info.st_mode&0o022:raise ValueError('Root-owned qualified growth receipt required')
+    fd=os.open(QUALIFIED,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC)
+    with os.fdopen(fd,'rb') as stream:
+        info=os.fstat(stream.fileno())
+        if not stat.S_ISREG(info.st_mode) or info.st_uid!=0 or info.st_mode&0o022 or info.st_size>65536:raise ValueError('Bounded growth receipt required')
+        value=json.load(stream)
+    pins=value.get('producer_pins')
+    if value.get('state')!='filesystem-grown-and-full-root-unchanged' or value.get('old_bytes')!=geometry.OLD or value.get('new_bytes')!=geometry.NEW or pins not in (source_pins(),ACCEPTED_GROWTH_PINS) or value.get('full_root_changed_paths')!=0 or MARKER.exists():raise ValueError('Exact completed growth receipt required')
     actual=identity();geometry.verify_table(disk_table(),geometry.NEW);fs=filesystem()
     if actual['disk_bytes']!=geometry.NEW or actual['kernel_partition_bytes']!=geometry.partition_bytes(geometry.NEW) or fs['block_count']*fs['block_size']!=geometry.partition_bytes(geometry.NEW) or value.get('gpt')!=gpt(geometry.NEW):raise ValueError('Completed disk/kernel/GPT/ext4 geometry differs')
     return value
