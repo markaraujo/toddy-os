@@ -1,24 +1,28 @@
 # Phase 2 continuation card
 
-## Replanned next generation (2026-11-18)
+## Current stop after generation 3 (2026-11-18)
 
-The normal `mvp-live` source profile and the candidate custody profile now select
-`/sources/stage/toddy-mvp-live-image-3`. Generation 1 and its three resource
-intents remain frozen; generation 2 remains the independent reviewed output.
-Before writing generation 3, sync the committed source, run an isolated dconf
-compile probe, measure guest free space against the recorded one-root bound, and
-verify that generation 3 does not already exist. Then perform one new unpack and
-resource qualification, recording each postcondition before proceeding. Do not
-invoke either recovery action against generation 1. The old account-recovery
-failure remains a historical finding, not an instruction to retry it.
+The normal `mvp-live` profile and custody profile selected new generation 3.
+Source sync passed after correcting the Ubuntu `/var/log` guard; its normal mode
+was restored and the growth receipt guard passed again. The isolated `dconf
+compile` probe produced the expected SHA-256. The fresh generation 3 unpack
+completed with 329 packages, but `qualify-mvp-live` returned a native command
+error after writing `resource-intent.json`. Its dconf output has the expected
+hash; later cache files changed, and there is **no candidate resource receipt**.
+Generation 1 and generation 3 are both frozen. Do not replay either intent or
+run a native producer in either root. The Candidate VM was cleanly stopped.
+See [the generation 3 failure record](evidence/B06-generation3.md).
 
-The next user-visible milestone is a local graphical VM preview. Public B13/G2
-release and portal handoff remain gated on B01–B12 acceptance and actual final
-ISO evidence. `docs/PHASE-2-TODAY-DELIVERY.md` records the smaller slices and
-stop conditions. The default 100 GiB host-export and cold-checkpoint reserve
-still applies outside ADR-0251's temporary local MVP delivery scope; existing
-export5 can be reused unchanged. Reassess free space before any later public
-source/export operation rather than broadening that exception silently.
+The slice is stopped under the bounded failure policy. Next, identify the exact
+first failing producer and its exit/stderr in a disposable overlay inside the
+same protected namespace, without writing generations 1 or 3. Reconcile the
+expected cache hashes and capacity before planning a new generation; current
+guest free space was 26,511,298,560 bytes, only about 480 MiB above the
+26,031,034,368-byte one-root preflight, so no new root is admitted without a
+fresh measured capacity plan. The next user-visible milestone remains a local
+graphical VM preview. Public B13/G2 and portal handoff still require B01–B12
+acceptance and final ISO evidence. The default 100 GiB host-export reserve
+remains outside ADR-0251's temporary local MVP delivery scope.
 
 ## Read-only restart reconciliation (2026-11-18)
 

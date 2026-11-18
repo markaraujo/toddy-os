@@ -4,10 +4,12 @@ Updated: 2026-11-18, America/Sao_Paulo.
 
 The next deliverable is a **local, explicitly interim owner preview** of the
 graphical VM. It is not B13/G2, an installable release, or a public download.
-The old MVP live root (`toddy-mvp-live-image-1`) has an uncertain resource
-operation and remains frozen. Normal MVP live commands now select the new
-`toddy-mvp-live-image-3` root. Never replay the old recovery intents, copy the
-old root into the new generation, or treat its partial dconf output as acceptance.
+The MVP live roots `toddy-mvp-live-image-1` and
+`toddy-mvp-live-image-3` now both have uncertain resource operations and remain
+frozen. Generation 3 unpacked 329 packages but qualification failed without a
+receipt. Never replay their intents, copy either root into a future generation,
+or treat partial cache output as acceptance. The first slice is stopped until
+the exact producer failure and a measured new-root capacity path are resolved.
 
 ## Small verified slices
 
