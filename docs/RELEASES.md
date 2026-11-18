@@ -9,7 +9,8 @@ is `v0.1.0-foundation.1`. The actual ISO was built and tested from commit
 approved original-material licenses. The image bytes did not change. Ten public
 assets passed GitHub digest/size and full download verification; see the
 [publication evidence](evidence/H13-github-release.md). G1 passed in QEMU/KVM.
-G2, physical hardware and B01-B13 remain pending. The foundation ISO has a
+G2 and physical hardware remain pending. B01–B05 are accepted; B06 is in
+progress and B07–B13 remain pending. The foundation ISO has a
 command-line volatile live system without desktop, agent or graphical installer.
 
 ## Release checklist
@@ -39,6 +40,10 @@ Major Phase 2 previews may use prereleases after their own actual milestone
 acceptance and the owner approval required before B01. G2 is the basic-tested experimental owner-preview gate under ADR-0105 and the
 current Phase 2 plan, not automatic promotion to stable 1.0. This is a delivery convention, not a
 promise that an unbuilt feature has passed.
+
+The current graphical VM target is a local interim owner preview. Its boot and
+interaction evidence do not authorize the B13/G2 release utility, a GitHub
+prerelease or a portal download row. Those require the final gates below.
 
 For the H13 source/build and testing instructions, use
 [FOUNDATION-TESTING.md](FOUNDATION-TESTING.md),

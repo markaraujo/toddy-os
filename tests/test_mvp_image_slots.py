@@ -6,8 +6,17 @@ ROOT=Path(__file__).resolve().parents[1]
 def module(name):
  spec=importlib.util.spec_from_file_location('mvp_'+name,ROOT/'scripts/build/phase2'/f'{name}.py')
  value=importlib.util.module_from_spec(spec);spec.loader.exec_module(value);return value
-a=module('image_assemble');m=module('image_media');i=module('image_inputs')
+a=module('image_assemble');m=module('image_media');i=module('image_inputs');c=module('candidate_root_custody')
 class MVPSlotsTests(unittest.TestCase):
+ def test_failed_mvp_root_is_preserved_and_next_generation_is_distinct(self):
+  self.assertEqual(a.GENERATIONS['mvp-live'][0],'toddy-mvp-live-image-3')
+  self.assertNotEqual(a.GENERATIONS['mvp-live'][0],'toddy-mvp-live-image-1')
+  self.assertEqual(a.GENERATIONS['mvp-live-reviewed'][0],'toddy-mvp-live-image-2')
+  with patch.object(c,'PROFILE','offline'):
+   c.configure('mvp-live')
+   self.assertEqual(c.WORK.name,a.GENERATIONS['mvp-live'][0])
+   self.assertEqual(c.REVIEWED.name,a.GENERATIONS['mvp-live-reviewed'][0])
+  c.configure('offline')
  def test_delivery_class_cannot_cross_standard_or_mvp_slots(self):
   manifest={'delivery_class':a.MVP_CLASS,'g2_eligible':False}
   a.check_delivery_kind('mvp-live',manifest);a.check_delivery_kind('base',{})

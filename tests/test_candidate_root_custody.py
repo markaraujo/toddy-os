@@ -206,11 +206,12 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
             with self.subTest(profile=name):
                 guest.configure(name);host.configure(name)
-                self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+'-image-1/root'))
+                generation=3 if name=='mvp-live' else 1
+                self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+f'-image-{generation}/root'))
                 self.assertEqual(guest.FINAL_ROOT.name,name+'-root-2')
                 self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer' if kind=='offline' else 'live')+'-native-inputs')
                 self.assertIn(' custody-'+name+'-inspect',host.command('inspect')[-1])
-                self.assertEqual(host.ARCHIVE_NAME,name+'-candidate1-root.tar.gz')
+                self.assertEqual(host.ARCHIVE_NAME,name+f'-candidate{generation}-root.tar.gz')
         with self.assertRaises(ValueError):guest.configure('mvp-arbitrary')
         source=(ROOT/'scripts/build/phase2/image_native.sh').read_text()
         self.assertIn('custody-mvp-offline-inspect|custody-mvp-offline-export',source)

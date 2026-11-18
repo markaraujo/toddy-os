@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-16T23:51:47.322612+00:00
+Updated: 2026-11-18T11:56:20.056163+00:00
 
 Bootstrap: ready_for_development
 
-Owner requests complete-plan delivery today with basic checks; first deliverable is a real desktop/UI VM for parallel owner validation. Base image unpack passed (321 configured packages). Resource qualification preflight exposed declared empty runtime directories; focused helper correction committed. Signed export5 is ready; final source delta generated. B01-B05 accepted (41% Phase2); UI media, installation, B06-B13/G2 and physical tests remain pending.
+B01–B05 accepted (41% Phase 2); B06 in progress. The previous MVP live root has an uncertain resource operation and is preserved. A distinct generation 3 is selected for a fresh live root after source sync, isolated dconf probe and capacity check. Next owner deliverable is a local graphical VM preview, followed by disposable-disk install checks. B07–B13/G2, public release, portal update and physical hardware validation remain evidence-gated; no MVP ISO or guest boot is accepted yet.
 
 Foundation: **100%** · Agentic desktop: **41%**
 

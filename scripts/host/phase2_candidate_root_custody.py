@@ -13,7 +13,8 @@ ROOT=vm.ROOT
 def configure(profile):
     global PROFILE,CONTEXT,ARCHIVE_NAME
     if profile not in ('offline','live','mvp-offline','mvp-live','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
-    PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+'-candidate-root-custody-1');ARCHIVE_NAME=profile+'-candidate1-root.tar.gz'
+    generation=3 if profile=='mvp-live' else 1
+    PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+f'-candidate-root-custody-{generation}');ARCHIVE_NAME=profile+f'-candidate{generation}-root.tar.gz'
     if profile in ('h10-expanded','h11-expanded'):
         CONTEXT=ROOT/'.local/phase2'/(profile+'-root-custody-1');ARCHIVE_NAME=profile+'-root.tar.gz'
 

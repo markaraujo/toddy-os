@@ -391,7 +391,8 @@ this plan. New untrusted XML consumers retain the existing bounds-review obligat
 Current authorization: the owner subsequently approved this plan and explicitly
 authorized isolated B01-B13/G2 implementation and release/portal delivery on
 2026-11-07; see [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md).
-B01 is in progress; native acceptance remains evidence-gated. Physical foundation
+B01–B05 are complete and B06 is in progress; remaining native acceptance is
+evidence-gated. Physical foundation
 testing remains pending. Planning/artwork alone still grants no implementation
 approval and proves no runtime behavior.
 

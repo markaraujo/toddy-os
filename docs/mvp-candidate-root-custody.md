@@ -15,13 +15,15 @@ python3 scripts/host/phase2_mvp_live_candidate_root_custody.py
 These are separate operations, not an instruction to run both without reviewing
 the first result. Offline selects only `toddy-mvp-offline-image-1/root` after
 actual matching `toddy-mvp-offline-image-2/mvp-offline-root-2` finalizer reports.
-Live selects only `toddy-mvp-live-image-1/root`, before live generation2 exists,
+Live selects only `toddy-mvp-live-image-3/root`, before live generation2 exists,
 after completed actual resource qualification and independently reviewed protected
 `toddy-mvp-live-native-inputs`. Existing standard offline/live slots are unchanged.
 The reviewed input reader enforces the corresponding MVP delivery class.
 
-Each profile has its own `.local/phase2/mvp-{offline,live}-candidate-root-custody-1`
-context and opaque `mvp-{offline,live}-candidate1-root.tar.gz` archive. Preserve all
+Offline uses `.local/phase2/mvp-offline-candidate-root-custody-1` and
+`mvp-offline-candidate1-root.tar.gz`; live uses
+`.local/phase2/mvp-live-candidate-root-custody-3` and
+`mvp-live-candidate3-root.tar.gz`. Preserve all
 intents, partial exports and failures; no replay or overwrite mode exists. Inspect
 an uncertain state before any further operation.
 

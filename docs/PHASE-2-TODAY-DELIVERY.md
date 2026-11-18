@@ -1,39 +1,32 @@
-# Current delivery execution
+# Current Phase 2 delivery execution
 
-Updated: 2026-11-16, America/Sao_Paulo.
+Updated: 2026-11-18, America/Sao_Paulo.
 
-The owner requested replanning toward the complete plan today, retaining the
-previous basic-test preference. The immediate additional instruction is to
-prepare a real graphical VM/image for owner validation while implementation
-continues. This is the first deliverable, not completion of B13/G2.
+The next deliverable is a **local, explicitly interim owner preview** of the
+graphical VM. It is not B13/G2, an installable release, or a public download.
+The old MVP live root (`toddy-mvp-live-image-1`) has an uncertain resource
+operation and remains frozen. Normal MVP live commands now select the new
+`toddy-mvp-live-image-3` root. Never replay the old recovery intents, copy the
+old root into the new generation, or treat its partial dconf output as acceptance.
 
-## Execution order
+## Small verified slices
 
-| Priority | Observable result | Dependency and current fact |
+| Slice | Entry condition | Acceptance and stop condition |
 | --- | --- | --- |
-| 1 | Owner can boot and interact with the real desktop/Toddy UI | Actual base unpack completed: 321 configured packages. Resource qualification stopped before its intent because packaged empty runtime directories were rejected. A focused developer-helper correction is committed; no runtime package rebuild is needed. Complete resource qualification, finalization and live media. |
-| 2 | A blank virtual disk installs and boots persistently | Use that media and the existing installer route; verify target identity, real finalizer reports and two normal UEFI owner boots/settings. Preserve the first desktop media. |
-| 3 | Remaining implemented features have basic real interaction evidence | Check native task/Stop, memory, one automation, speech and isolated integration; retain explicit failures and disabled functions. Reuse unchanged component evidence. |
-| 4 | Owner receives the release, checksum and use/recovery instructions | Verify actual artifact bytes, final export5 source accounting, publish the real scope and update all approved portal locales and dashboard. |
-| 5 | Complete-plan acceptance is assessed against actual results | B06–B13/G2 remain pending until their criteria pass. Experimental delivery does not imply stable, full-plan or physical-machine acceptance. |
+| 1. Fresh live root | Host/guest capacity measured; existing failed root preserved; reviewed inputs unchanged | New generation unpacks and qualifies resources once. Save actual receipt, package count, root identity, command exit and log. Stop on uncertain postconditions; reconcile before any retry. |
+| 2. Graphical local preview | Slice 1 accepted; finalizer and media inputs verified | Boot isolated candidate in QEMU/KVM; capture real login, desktop, Toddy entry, basic text/Stop and failure states. Owner can interact with the isolated VM. Record absent features honestly. |
+| 3. Installed local preview | Slice 2 accepted; blank test disk and installer prerequisites verified | Install to a designated disposable virtual disk, boot twice without ISO, and check persistent user data/settings and target identity. Stop before writes if disk identity differs. |
+| 4. Remaining B stories | Follow `status.json` dependencies and existing acceptance criteria | Implement B06–B12 in small independently checked slices. B07/B10 can proceed when useful without a second guest writer. Do not count untested work as complete. |
+| 5. B13/G2 public delivery | B01–B12 accepted and B13 in progress with final ISO evidence | Use `docs/RELEASES.md` and the Phase 2 handoff utility for immutable artifacts, checksums, source/license inventory, GitHub prerelease and portal verification. Physical hardware remains a separate claim. |
 
-## Four concurrent responsibilities
+One agent owns all guest/image writes. Independent source or documentation work
+may overlap only when resource and lock budgets permit. There is no fixed worker
+count or calendar deadline for unmeasured build and boot work.
 
-The coordinator owns the single guest/image writer and UI/boot/install sequence.
-Three isolated source workers cover final package sources/licenses, functional
-gaps/publication, and capacity/media audit. Independent host work overlaps guest
-work only when resource budgets and locks admit it. Owner interaction must use
-an isolated image, never a writable backing shared with a running builder.
-
-Freeze current runtime/package identities unless a concrete delivery failure
-requires a correction. Do not rebuild accepted Qt, Calamares, voice or foundation
-components, repeat unchanged long suites, add new test frameworks, polish visuals
-or extend hardware/provider matrices on this path. Keep essential disk, secret,
-privilege, Stop/replay and recovery checks. Run one batched repository check for
-publication plus focused checks of changed behavior.
-
-Each failure gets one diagnosed correction and affected retry. Apply the existing
-bounded failure ledger; checkpoint an independent blocker instead of allowing it
-to consume every worker. Healthy builds continue. Artifact production and the
-remaining integrated boots have no measured completion time yet, so today is the
-execution target, not a guaranteed completion claim.
+For each slice, save exact inputs, elapsed time, commands, exit status,
+postconditions, log path and next action in the checkpoint. Apply the bounded
+failure policy in `AGENTS.md`: one unchanged transient retry; after two failed
+corrections or 30 minutes on the same cause, stop that slice and move to eligible
+independent work. A healthy long build is monitored, not restarted. Use focused
+checks, then `make check` for repository changes. Preserve the 16 GiB guest
+reserve and use the temporary host reserve only where ADR-0251 permits it.

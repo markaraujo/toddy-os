@@ -1,5 +1,25 @@
 # Phase 2 continuation card
 
+## Replanned next generation (2026-11-18)
+
+The normal `mvp-live` source profile and the candidate custody profile now select
+`/sources/stage/toddy-mvp-live-image-3`. Generation 1 and its three resource
+intents remain frozen; generation 2 remains the independent reviewed output.
+Before writing generation 3, sync the committed source, run an isolated dconf
+compile probe, measure guest free space against the recorded one-root bound, and
+verify that generation 3 does not already exist. Then perform one new unpack and
+resource qualification, recording each postcondition before proceeding. Do not
+invoke either recovery action against generation 1. The old account-recovery
+failure remains a historical finding, not an instruction to retry it.
+
+The next user-visible milestone is a local graphical VM preview. Public B13/G2
+release and portal handoff remain gated on B01–B12 acceptance and actual final
+ISO evidence. `docs/PHASE-2-TODAY-DELIVERY.md` records the smaller slices and
+stop conditions. The default 100 GiB host-export and cold-checkpoint reserve
+still applies outside ADR-0251's temporary local MVP delivery scope; existing
+export5 can be reused unchanged. Reassess free space before any later public
+source/export operation rather than broadening that exception silently.
+
 ## Read-only restart reconciliation (2026-11-18)
 
 Git is clean at 02b4981 before this environment correction. No guest writer is
