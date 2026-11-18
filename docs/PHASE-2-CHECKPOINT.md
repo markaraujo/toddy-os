@@ -1,5 +1,31 @@
 # Phase 2 continuation card
 
+## B06 bounded local ISO attempt: generation 8 (2026-11-18)
+
+The owner authorized one fresh generation after all admission gates, with no
+B07–B13 progression or G2 acceptance. Initial Git was clean main at fecedfa.
+After the host restart the exact Candidate container was exited0, no writer
+remained, both candidate qcow2 checks passed and accepted backings were unchanged.
+The retained container was restarted once. Target serial/UUID and 204GiB size
+match; target free space is 41,193,058,304 bytes. Export8 has 329 packages and
+920 exact host/guest files including both reverified signatures. Inputs4 and old
+generation6/7 guards are inventoried privately. A disposable native overlay
+verified targeted dconf compile, root:root mode0644 and all three actual values;
+the lower dconf tree was unchanged and no IBus output was created.
+
+Current slice: route only the fresh candidate/reviewed generation8; preserve
+historical custody profiles. Run focused slot/live/custody checks and make check,
+commit reviewed source, sync under the exclusive lock and verify coherence.
+Before root creation, remeasure host/guest space and enforce both the actual
+root allocation gate and forecast compression gate. Execute each write once,
+require 329 packages/zero blockers plus independent complete-image review, then
+actual finalization/live receipt. Any divergent result stops this cut without
+another generation. Measure compression/initramfs/ISO gates from actual inputs
+before each write. Private logs: `.local/phase2/b06-generation8/`.
+
+Next: finish committed-source admission and disposable source coherence, then
+perform the single fresh unpack only if every gate passes.
+
 ## Current bounded stop after live stage generation 7 (2026-11-18)
 
 The owner authorized cleanup of verified unused copies and a separate read-only
