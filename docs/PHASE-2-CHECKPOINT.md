@@ -1,5 +1,46 @@
 # Phase 2 continuation card
 
+## Read-only restart reconciliation (2026-11-18)
+
+Git is clean at 02b4981 before this environment correction. No guest writer is
+running. The stopped `toddy-phase2-candidate` Docker record exited 0 and was
+removed after its identity, label and mounts were checked; the Candidate qcow2
+files, accepted backings, serial log and private runtime pointer were preserved.
+Both Candidate overlays and all five backings passed read-only `qemu-img check`.
+This verifies qcow2 structure, not guest filesystem contents or image acceptance.
+
+Read-only libguestfs inspection identified the builder's `/usr/sbin/chroot` and
+the installed `resource_recipe.py` SHA-256
+`b1395671ad0c8b68f9b0edc81ee1980f55ec7937d3f6b7bcca87ca0505d2272a`,
+matching current source. The older `/usr/bin/chroot` ENOENT log predates the
+`bc27eba` correction. The target ext4 UUID
+`e7726c1a-8f91-445f-96ac-88721b58caf8` matches the builder's `/mnt/lfs`
+fstab entry. Its root at `/sources/stage/toddy-mvp-live-image-1/root` retains
+inode 11337797 and the pinned unpack/resource intents. The later
+`resource-account-recovery-intent2.json` exists, but no candidate resource
+receipt exists. The subsequent log records `dconf update` returning nonzero.
+Its `/etc/dconf/db/toddy-desktop` output was modified at 21:14:44 on 2026-11-16
+and matches the declared SHA-256
+`5d86fa8e8e16c157ec30cc9e2cca4fe71d50b580d1932936894b927036100cb4`.
+The command's stderr was suppressed, so its failure cause remains unknown and
+the partially changed root is not qualified. Never replay any of the three
+resource intents or run another native producer in this root. Source now scopes
+this producer to `dconf compile /etc/dconf/db/toddy-desktop
+/etc/dconf/db/toddy-desktop.d`, avoiding unrelated databases. The next
+development slice must sync that reviewed source through the controlled guest
+path, verify its expected output in an isolated disposable root, preserve this
+failed root, then plan a distinct fresh candidate generation. Stop after one
+failed isolated probe; an unchanged retry is not justified by this evidence.
+
+The target ext4 had 30.45 GiB available, above its unchanged 16 GiB reserve.
+The host had about 92 GiB available, below the default Candidate 100 GiB +
+512 MiB start floor but above ADR-0251's 60 GiB + 512 MiB delivery floor.
+`phase2_candidate_vm.py --mvp-delivery start` now selects that temporary floor
+explicitly for this MVP candidate only; ordinary starts and preparation keep
+their default floor. Recheck actual free space before starting. The first
+start after this source change requires a clean committed checkout and the
+existing single-writer/backing guards. Do not infer B06, ISO or G2 acceptance.
+
 ## Immediate owner UI delivery
 
 Owner explicitly approved a temporary60GiB+512MiB host reserve for this delivery
@@ -10,10 +51,9 @@ Older100GiB references below remain historical/default policy.
 The owner now requests a real graphical VM/image to validate while development
 continues. Follow [today delivery execution](PHASE-2-TODAY-DELIVERY.md). Complete
 plan delivery remains the target; basic-tested intermediate media is not G2.
-Actual base unpack passed321configured packages. Resource qualification failed
-before its intent at packaged empty runtime directories; focused developer-only
-correction89d2888 preserves exact ownership and rejects runtime files. Controlled
-source sync and affected qualification are next. No ISO exists yet.
+Actual base unpack passed321configured packages. Historical pre-intent resource
+qualification and its correction89d2888 remain recorded, but the current live
+root is at the failed account-recovery intent described above. No ISO exists yet.
 
 ## Basic-tested MVP delivery current
 

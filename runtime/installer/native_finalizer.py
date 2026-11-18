@@ -46,7 +46,8 @@ def cache_command(path,tool):
     if path=='/usr/share/mime/mime.cache' and tool=='/usr/bin/update-mime-database':return [tool,'/usr/share/mime']
     if path.endswith('/giomodule.cache') and tool=='/usr/bin/gio-querymodules':return [tool,parent]
     if path=='/usr/lib/udev/hwdb.bin' and tool=='/usr/bin/systemd-hwdb':return [tool,'update','--usr']
-    if path.startswith('/etc/dconf/db/') and tool=='/usr/bin/dconf':return [tool,'update']
+    if Path(path).parent==Path('/etc/dconf/db') and not path.endswith('.d') and tool=='/usr/bin/dconf':
+        return [tool,'compile',path,path+'.d']
     if path.startswith('/usr/lib/modules/7.1.8-toddy/modules.') and tool=='/usr/sbin/depmod':return [tool,'-a','7.1.8-toddy']
     # kmod34.2 dispatches compatibility commands from argv[0], not a subcommand.
     # Frozen Coreutils env supports --argv0; both regular executables are checked.

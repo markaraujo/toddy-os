@@ -94,7 +94,9 @@ class LiveBindingsTests(unittest.TestCase):
 
  def test_cache_argv_is_fixed_and_unknown_recipe_refuses(self):
   self.assertEqual(cache_command('/usr/share/glib-2.0/schemas/gschemas.compiled','/usr/bin/glib-compile-schemas'),['/usr/bin/glib-compile-schemas','--strict','/usr/share/glib-2.0/schemas'])
-  for path,tool in [('/usr/share/icons/../bad/icon-theme.cache','/usr/bin/gtk-update-icon-cache'),('/usr/share/glib-2.0/schemas/gschemas.compiled','/tmp/run-hook'),('/unknown','/usr/bin/true')]:
+  self.assertEqual(cache_command('/etc/dconf/db/toddy-desktop','/usr/bin/dconf'),
+                   ['/usr/bin/dconf','compile','/etc/dconf/db/toddy-desktop','/etc/dconf/db/toddy-desktop.d'])
+  for path,tool in [('/usr/share/icons/../bad/icon-theme.cache','/usr/bin/gtk-update-icon-cache'),('/usr/share/glib-2.0/schemas/gschemas.compiled','/tmp/run-hook'),('/etc/dconf/db/toddy-desktop.d','/usr/bin/dconf'),('/unknown','/usr/bin/true')]:
    with self.assertRaises(ValueError):cache_command(path,tool)
 
  def test_boot_qualification_requires_distinct_detached_persistent_boots(self):
