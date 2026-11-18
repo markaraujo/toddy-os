@@ -5,7 +5,7 @@ from pathlib import Path
 sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[2];sys.path[:0]=[str(HERE)]
 import offline_payload as p
-from image_media import inherited_media_lease
+from image_media import inherited_media_lease,trusted_log_parent
 TARGET=Path('/mnt/lfs');EXPORT=TARGET/'sources/stage/toddy-package-export-3'
 RUN=TARGET/'run/toddy-export3-public-verification-1'
 RECEIPT=Path('/var/log/toddy/phase2/package-export3-public-signatures-1.json')
@@ -17,7 +17,7 @@ def protected(path,directory=False):
     if path.resolve()!=path:raise ValueError('Signature3 redirected path')
     for parent in path.parents:
         info=parent.lstat()
-        if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_mode&0o022:raise ValueError('Signature3 unprotected ancestor')
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or (info.st_mode&0o022 and not trusted_log_parent(parent,info)):raise ValueError('Signature3 unprotected ancestor')
     info=path.lstat()
     if info.st_uid or info.st_gid or info.st_mode&0o022 or not (stat.S_ISDIR(info.st_mode) if directory else stat.S_ISREG(info.st_mode) and info.st_nlink==1):raise ValueError('Signature3 unprotected input')
     return path

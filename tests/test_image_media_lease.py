@@ -1,8 +1,23 @@
 """Actual inherited kernel lease fixture; no namespace/mount/VM execution."""
-import os,subprocess,sys,tempfile,unittest
+import grp,os,stat,subprocess,sys,tempfile,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 class MediaLeaseTests(unittest.TestCase):
+ def test_only_exact_ubuntu_log_parent_exception(self):
+  sys.path.insert(0,str(ROOT/'scripts/build/phase2'))
+  import image_media as media
+  class Info:
+   st_uid=0
+   st_gid=grp.getgrnam('syslog').gr_gid
+   st_mode=stat.S_IFDIR|0o775
+  info=Info()
+  self.assertTrue(media.trusted_log_parent(Path('/var/log'),info))
+  self.assertFalse(media.trusted_log_parent(Path('/var/log/toddy'),info))
+  info.st_gid=0
+  self.assertFalse(media.trusted_log_parent(Path('/var/log'),info))
+  info.st_gid=grp.getgrnam('syslog').gr_gid
+  info.st_mode=stat.S_IFDIR|0o777
+  self.assertFalse(media.trusted_log_parent(Path('/var/log'),info))
  def test_fixed_builder_route_closes_only_input_not_global_lease(self):
   source=(ROOT/'scripts/build/phase2/image_native.sh').read_text()
   subprocess.run(['/bin/bash','-n',str(ROOT/'scripts/build/phase2/image_native.sh')],check=True)

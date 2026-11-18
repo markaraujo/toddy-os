@@ -5,6 +5,7 @@ Missing real assembly attribution fails before creating a media generation.
 """
 import stat
 import gzip
+import grp
 import hashlib
 import json
 import os
@@ -306,13 +307,18 @@ def iso_phase(backend):
 
 
 
+def trusted_log_parent(path,info):
+    return (path==Path('/var/log') and stat.S_ISDIR(info.st_mode) and info.st_uid==0 and
+        info.st_gid==grp.getgrnam('syslog').gr_gid and stat.S_IMODE(info.st_mode)==0o775)
+
+
 def inherited_media_lease():
     """Only the fixed protected-view wrapper may supply the existing FD9 lease."""
     path=BUILD/'build.lock'
     if path.resolve()!=path:raise ValueError('Media global lease redirected')
     for parent in path.parents:
         info=parent.lstat()
-        if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_mode&0o022:raise ValueError('Media global lease unprotected')
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or (info.st_mode&0o022 and not trusted_log_parent(parent,info)):raise ValueError('Media global lease unprotected')
     expected=path.lstat();actual=os.fstat(9)
     if (not stat.S_ISREG(expected.st_mode) or expected.st_uid or expected.st_mode&0o022 or expected.st_nlink!=1 or
             Path('/proc/self/fd/9').readlink()!=path or (actual.st_dev,actual.st_ino)!=(expected.st_dev,expected.st_ino)):
