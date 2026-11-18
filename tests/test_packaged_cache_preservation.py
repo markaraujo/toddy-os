@@ -19,7 +19,7 @@ class PackagedCachePreservationTests(unittest.TestCase):
         self.assertTrue(packaged_cache_profile('/usr/lib/udev/hwdb.bin','/usr/bin/systemd-hwdb'))
         self.assertTrue(packaged_cache_profile('/usr/share/icons/hicolor/icon-theme.cache','/usr/bin/gtk4-update-icon-cache'))
         self.assertTrue(packaged_cache_profile('/usr/share/mime/mime.cache','/usr/bin/update-mime-database'))
-        self.assertFalse(packaged_cache_profile('/usr/share/icons/Adwaita/icon-theme.cache','/usr/bin/gtk4-update-icon-cache'))
+        self.assertTrue(packaged_cache_profile('/usr/share/icons/Adwaita/icon-theme.cache','/usr/bin/gtk4-update-icon-cache'))
         self.assertFalse(packaged_cache_profile('/usr/lib/modules/7.1.8-toddy/modules.dep','/usr/bin/other'))
         self.assertFalse(packaged_cache_profile('/usr/share/mime/mime.cache','/usr/bin/other'))
 

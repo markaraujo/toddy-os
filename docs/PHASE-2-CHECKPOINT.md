@@ -1,5 +1,23 @@
 # Phase 2 continuation card
 
+## Current stop after generation 5 (2026-11-18)
+
+Host free space was rechecked at 108,245,028,864 bytes after the owner cleared a
+non-project cache, above the normal Candidate start reserve. The previously
+stopped Candidate container exited 0 and was started using its verified existing
+record. Read-only reconciliation of generation5 found one blocker: the
+`/usr/share/icons/Adwaita/icon-theme.cache` content hash is exactly the signed
+selected package hash, but native `gtk4-update-icon-cache` left mode 0600 where
+the package ownership record requires 0644. The blocked receipt and root remain
+untouched. A fixed exact-package preservation contract for this one cache is
+prepared in source and covered by a focused test. See
+[generation5 evidence](evidence/B06-generation5.md). This is the repeated native
+cache-output cause, so the current slice stops under the bounded-failure rule.
+Do not replay generation5's resource intent or treat its blocked receipt as
+acceptance. Before another live generation, review the source correction and
+verify its package/installer/preview coherence in a fresh, separately bounded
+slice. No ISO, boot, installed preview or G2 acceptance has been established.
+
 ## Current stop after generation 4 (2026-11-18)
 
 Installer7/version5, projection4, signed export6, native public verification and
