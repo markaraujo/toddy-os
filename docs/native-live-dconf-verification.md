@@ -19,13 +19,17 @@ guard, absent native jobs and private mount namespace remain prerequisites.
 
 The helper requires generation9's actual successful live receipt, nine real
 finalizer reports, their source/hash custody and the complete final assembly
-snapshot. It verifies the current root inode, native Dconf binary, database
+snapshot. It binds its own helper hash alongside the other source inputs. It verifies the
+current root inode, native Dconf binary, database
 root:root mode0644 and content hash, exact session source and attributed user
 profile before native execution. Generation8, another root or stale receipts
 cannot select the observer input.
 
 A fresh128MiB tmpfs holds a read-only bind of the preserved image, overlay upper,
-work directory and disposable merged view. Only that merged view enters the
+work directory and disposable merged view. Actual `findmnt` filesystem/options
+readback must show a read-only ext4 lower with the same image inode/device, and
+a writable overlay with the exact lower/upper/work paths and nosuid/nodev flags.
+Only that merged view enters the
 native chroot for the three fixed queries. Root user runtime files such as
 `run/user/0/dconf/user` therefore belong to the upper tree and are reported in its
 bounded inventory. The native process receives a cleared environment and a

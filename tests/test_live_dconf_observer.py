@@ -2,14 +2,13 @@
 from contextlib import contextmanager
 import hashlib
 import importlib.util
-import json
 from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('live_dconf_observer', ROOT / 'scripts/build/phase2/verify_live_dconf.py')
@@ -69,6 +68,43 @@ class BindingTests(unittest.TestCase):
         with patch.object(m.sys, 'argv', ['verify_live_dconf.py', '/another/root']):
             with self.assertRaisesRegex(ValueError, 'Fixed root'):
                 m.main()
+
+
+class MountTopologyTests(unittest.TestCase):
+    def test_actual_filesystem_and_ro_flags_are_required_for_lower(self):
+        result = subprocess.CompletedProcess([], 0, 'ext4 ro,nosuid,nodev,relatime\n', '')
+        with patch.object(m, 'run', return_value=result):
+            m.mount_profile(Path('/run/fixed/lower'), 'ext4', {'ro', 'nosuid', 'nodev'}, forbidden={'rw'})
+            for output in ('ext4 rw,nosuid,nodev\n', 'overlay ro,nosuid,nodev\n',
+                           'ext4 ro,nodev\n', 'ext4 ro,nosuid,nodev\next4 ro,nosuid,nodev\n'):
+                result.stdout = output
+                with self.subTest(output=output), self.assertRaises(ValueError):
+                    m.mount_profile(Path('/run/fixed/lower'), 'ext4', {'ro', 'nosuid', 'nodev'}, forbidden={'rw'})
+
+    def test_overlay_must_resolve_exact_lower_upper_and_work_with_rw_flags(self):
+        good = 'overlay rw,nosuid,nodev,lowerdir=/run/fixed/lower,upperdir=/run/fixed/upper,workdir=/run/fixed/work\n'
+        values = {'lowerdir': '/run/fixed/lower', 'upperdir': '/run/fixed/upper', 'workdir': '/run/fixed/work'}
+        result = subprocess.CompletedProcess([], 0, good, '')
+        with patch.object(m, 'run', return_value=result):
+            m.mount_profile(Path('/run/fixed/root'), 'overlay', {'rw', 'nosuid', 'nodev'}, forbidden={'ro'}, values=values)
+            for output in (good.replace('rw,', 'ro,'), good.replace('overlay ', 'ext4 '),
+                           good.replace('lowerdir=/run/fixed/lower', 'lowerdir=/another/root'),
+                           good.replace('upperdir=/run/fixed/upper', 'upperdir=/mnt/lfs/root'),
+                           good.replace('workdir=/run/fixed/work', 'workdir=/another/work'),
+                           good.rstrip() + ',lowerdir=/another/root\n'):
+                result.stdout = output
+                with self.subTest(output=output), self.assertRaises(ValueError):
+                    m.mount_profile(Path('/run/fixed/root'), 'overlay', {'rw', 'nosuid', 'nodev'}, forbidden={'ro'}, values=values)
+
+    def test_lower_bind_must_retain_image_device_and_inode(self):
+        image = Mock();lower = Mock()
+        image.stat.return_value = Mock(st_dev=17, st_ino=39)
+        lower.stat.return_value = Mock(st_dev=17, st_ino=39)
+        m.lower_identity(lower, image)
+        for device, inode in ((18, 39), (17, 40)):
+            lower.stat.return_value = Mock(st_dev=device, st_ino=inode)
+            with self.subTest(device=device, inode=inode), self.assertRaisesRegex(ValueError, 'fixed image inode'):
+                m.lower_identity(lower, image)
 
 
 class ObserverFilesystemTests(unittest.TestCase):

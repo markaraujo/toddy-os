@@ -6,7 +6,6 @@ No image file, original snapshot or assembly receipt is written by this helper.
 """
 from contextlib import contextmanager
 from dataclasses import dataclass
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -128,7 +127,8 @@ def inputs():
     paths = {'journal': media.JOURNAL, 'manifest': manifest,
              'live': WORK / 'live-profile-receipt.json', 'finalized': WORK / 'finalized.json',
              'live-manifest': WORK / 'live-image-manifest.json',
-             'live-source': HERE / 'live_profile.py', 'assembler': HERE / 'image_assemble.py'}
+             'live-source': HERE / 'live_profile.py', 'assembler': HERE / 'image_assemble.py',
+             'observer-source': Path(__file__)}
     hashes = {str(path): digest(path) for path in paths.values()}
     live = media.p.strict(secured(paths['live']).read_bytes())
     finalized = media.p.strict(secured(paths['finalized']).read_bytes())
@@ -178,6 +178,30 @@ def mount_id(path):
     return value
 
 
+def mount_profile(path, filesystem, required, *, forbidden=(), values=None):
+    """Read actual kernel mount topology; requested options are not proof."""
+    result = run(['/usr/bin/findmnt', '-rn', '-o', 'FSTYPE,OPTIONS', '--mountpoint', str(path)],
+                 capture_output=True, text=True, timeout=30)
+    lines = result.stdout.strip().splitlines()
+    fields = lines[0].split(None, 1) if len(lines) == 1 else []
+    if len(fields) != 2 or fields[0] != filesystem:
+        raise ValueError('Dconf observer actual mount filesystem differs')
+    options = fields[1].split(',')
+    if (not set(required) <= set(options) or set(forbidden) & set(options)
+            or len(options) != len(set(options))):
+        raise ValueError('Dconf observer actual mount options differ')
+    for name, expected in (values or {}).items():
+        observed = [option[len(name) + 1:] for option in options if option.startswith(name + '=')]
+        if observed != [str(expected)]:
+            raise ValueError('Dconf observer actual overlay topology differs')
+
+
+def lower_identity(lower, image=IMAGE):
+    actual, expected = lower.stat(), image.stat()
+    if (actual.st_dev, actual.st_ino) != (expected.st_dev, expected.st_ino):
+        raise ValueError('Dconf observer lower mount is not the fixed image inode')
+
+
 @contextmanager
 def disposable_overlay():
     """All writable state belongs to one bounded fresh private tmpfs."""
@@ -187,19 +211,22 @@ def disposable_overlay():
         run(['/usr/bin/mount', '-t', 'tmpfs', '-o', 'size=128m,mode=0700,nosuid,nodev',
              'toddy-live-dconf9', str(base)], timeout=30)
         tmpfs = mount_id(base)
+        mount_profile(base, 'tmpfs', {'rw', 'nosuid', 'nodev'}, forbidden={'ro'})
         for name in ('lower', 'upper', 'work', 'root'):
             (base / name).mkdir(mode=0o700)
         run(['/usr/bin/mount', '--bind', str(IMAGE), str(base / 'lower')], timeout=30)
         lower_mount = mount_id(base / 'lower')
         run(['/usr/bin/mount', '-o', 'remount,bind,ro,nosuid,nodev', str(base / 'lower')], timeout=30)
-        options = run(['/usr/bin/findmnt', '-rn', '-o', 'OPTIONS', '--mountpoint', str(base / 'lower')],
-                      capture_output=True, text=True, timeout=30).stdout.strip().split(',')
-        if not {'ro', 'nosuid', 'nodev'} <= set(options):
-            raise ValueError('Dconf observer lower mount must be read-only')
+        mount_profile(base / 'lower', 'ext4', {'ro', 'nosuid', 'nodev'}, forbidden={'rw'})
+        lower_identity(base / 'lower')
         run(['/usr/bin/mount', '-t', 'overlay', 'overlay', '-o',
              f'lowerdir={base}/lower,upperdir={base}/upper,workdir={base}/work,nosuid,nodev',
              str(base / 'root')], timeout=30)
         overlay_mount = mount_id(base / 'root')
+        mount_profile(base / 'root', 'overlay', {'rw', 'nosuid', 'nodev'}, forbidden={'ro'},
+                      values={'lowerdir': base / 'lower', 'upperdir': base / 'upper',
+                              'workdir': base / 'work'})
+        lower_identity(base / 'lower')
         yield base / 'root', base / 'upper'
     finally:
         # Mount IDs must still name our exact mounts. Never lazy-unmount or
