@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "story": "B06",
+  "generation": 8,
+  "execution_date": "2026-11-18",
+  "handoff_reconciled_date": "2026-11-20",
+  "scope": "one bounded local provisional graphical ISO attempt; stopped on compression gate",
+  "initial_git": {
+    "branch": "main",
+    "commit": "fecedfa118f607e52d66d495a84e0549473a3573",
+    "clean": true
+  },
+  "source_commit": "d72dfda933d22cbf7d98bfb475d0f15259965bd3",
+  "branch": "b06/local-iso-generation8",
+  "pull_request": "https://github.com/markaraujo/toddy-os/pull/2",
+  "passed": {
+    "signed_export_generation": 8,
+    "export_host_guest_files": 920,
+    "configured_packages": 329,
+    "cache_outputs": 19,
+    "candidate_image_entries": 150280,
+    "candidate_image_sha256": "fcdd70749575fc562fddc007d9a38f8f92d09fd16eb0ae34421737cdd2eb5941",
+    "generated_sha256": "93b6042c5f3cae9ee0dff2142182e9729f32537f646acf7b9fc15c4bdb33af26",
+    "finalizer_checks": 9,
+    "independent_source_root_finalizer_live_reviews": true,
+    "live_receipt_sha256": "cacf5c989e48d5d1c87b386514239c1df08a2bf02f3acf17c7c1fe3397ef6e5d",
+    "live_journal_sha256": "49d9ff60ad0065ac28cc38d70b3970ea1eda6574261b21f5c6ffc88e3d5b09d6",
+    "live_media_snapshot_entries": 150294,
+    "live_media_manifest_sha256": "bd5c3f319af634949d3a2fe2433095a60c23d7145d5cf4c547479491a44af93e",
+    "dconf": {
+      "gid": 0,
+      "mode": "0o644",
+      "path": "/etc/dconf/db/toddy-live",
+      "sha256": "b7afc3830f61d8c9180161c6c1bfef4d31dd42dab8d2fdb9ae92966e7c6ba010",
+      "uid": 0,
+      "values": {
+        "/org/gnome/desktop/lockdown/disable-lock-screen": "true",
+        "/org/gnome/desktop/screensaver/lock-enabled": "false",
+        "/org/gnome/desktop/session/idle-delay": "uint32 0"
+      }
+    },
+    "focused_tests": 34,
+    "source_make_check_tests": 1199,
+    "source_make_check_seconds": 23.533,
+    "inputs4_and_generation6_7_guard_hashes_unchanged_at_stop": true,
+    "handoff_make_check_tests": 1199,
+    "handoff_make_check_seconds": 24.86
+  },
+  "commands": {
+    "wrapper": "bash /opt/toddy-build/scripts/build/phase2/image_native.sh",
+    "unit_results": {
+      "compress": "MainPID=0\nResult=exit-code\nExecMainStartTimestamp=Wed 2026-11-18 15:47:50 UTC\nExecMainExitTimestamp=Wed 2026-11-18 15:48:15 UTC\nExecMainStatus=1\nActiveState=failed\nSubState=failed\n",
+      "finalize": "MainPID=0\nResult=success\nExecMainStartTimestamp=Wed 2026-11-18 15:43:23 UTC\nExecMainExitTimestamp=Wed 2026-11-18 15:44:36 UTC\nExecMainStatus=0\nActiveState=active\nSubState=exited\n",
+      "live": "MainPID=0\nResult=success\nExecMainStartTimestamp=Wed 2026-11-18 15:45:04 UTC\nExecMainExitTimestamp=Wed 2026-11-18 15:46:29 UTC\nExecMainStatus=0\nActiveState=active\nSubState=exited\n",
+      "resource": "MainPID=0\nResult=success\nExecMainStartTimestamp=Wed 2026-11-18 15:40:03 UTC\nExecMainExitTimestamp=Wed 2026-11-18 15:40:53 UTC\nExecMainStatus=0\nActiveState=active\nSubState=exited\n",
+      "unpack": "MainPID=0\nResult=success\nExecMainStartTimestamp=Wed 2026-11-18 15:38:38 UTC\nExecMainExitTimestamp=Wed 2026-11-18 15:39:48 UTC\nExecMainStatus=0\nActiveState=active\nSubState=exited\n"
+    }
+  },
+  "capacity": {
+    "root_required_bytes": 26031038464,
+    "before_root_guest_free_bytes": 41193054208,
+    "compression": {
+      "state": "generation8-actual-compression-capacity-admitted",
+      "root_bound_bytes": 6837329920,
+      "guest_free_bytes": 34926219264,
+      "required_bytes": 33002012672,
+      "margin_bytes": 1924206592,
+      "entries": 150294,
+      "assembly_journal_sha256": "49d9ff60ad0065ac28cc38d70b3970ea1eda6574261b21f5c6ffc88e3d5b09d6",
+      "manifest_sha256": "bd5c3f319af634949d3a2fe2433095a60c23d7145d5cf4c547479491a44af93e",
+      "compression_slot": "/mnt/lfs/sources/stage/toddy-mvp-live-compression-1"
+    },
+    "host_compression_admission": {
+      "host_free_bytes": 116109500416,
+      "required_bytes": 81320394752,
+      "phase_extra_bytes": 15822143488,
+      "qcow_metadata_margin_bytes": 536870912,
+      "state": "passed"
+    },
+    "guest_free_at_stop_bytes": 34926223360,
+    "host_free_at_handoff_bytes": 116005810176,
+    "guest_free_is_last_live_measurement_from": "2026-11-18"
+  },
+  "failed": {
+    "stage": "media-mvp-compress",
+    "exit_status": 1,
+    "message": "Actual image differs from final assembly",
+    "native_compressor_started": false,
+    "compression_slot_present": false,
+    "cause": "Coordinator ran native dconf read against writable finalized root while read-only media admission was inspecting it; dconf initialized root runtime state. The observer changed the image.",
+    "drift": {
+      "actual_entries": 150298,
+      "changed_entries": {
+        "run": {
+          "actual": {
+            "gid": 0,
+            "mode": 16877,
+            "mtime_ns": 1795016822210932469,
+            "uid": 0,
+            "xattrs": {}
+          },
+          "expected": {
+            "gid": 0,
+            "mode": 16877,
+            "mtime_ns": 1795016359413183630,
+            "uid": 0,
+            "xattrs": {}
+          }
+        },
+        "run/user": {
+          "actual": {
+            "gid": 0,
+            "mode": 16832,
+            "mtime_ns": 1795016822210932469,
+            "uid": 0,
+            "xattrs": {}
+          },
+          "expected": null
+        },
+        "run/user/0": {
+          "actual": {
+            "gid": 0,
+            "mode": 16832,
+            "mtime_ns": 1795016822211932463,
+            "uid": 0,
+            "xattrs": {}
+          },
+          "expected": null
+        },
+        "run/user/0/dconf": {
+          "actual": {
+            "gid": 0,
+            "mode": 16832,
+            "mtime_ns": 1795016822211932463,
+            "uid": 0,
+            "xattrs": {}
+          },
+          "expected": null
+        },
+        "run/user/0/dconf/user": {
+          "actual": {
+            "gid": 0,
+            "mode": 33152,
+            "mtime_ns": 1795016822216932437,
+            "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+            "size": 2,
+            "uid": 0,
+            "xattrs": {}
+          },
+          "expected": null
+        }
+      },
+      "compression_slot_present": false,
+      "difference": {
+        "changed": [
+          {
+            "fields": [
+              "mtime_ns"
+            ],
+            "path": "run"
+          }
+        ],
+        "hardlinks_match": true,
+        "matches": false,
+        "missing": [],
+        "unknown": [
+          "run/user",
+          "run/user/0",
+          "run/user/0/dconf",
+          "run/user/0/dconf/user"
+        ]
+      },
+      "expected_entries": 150294,
+      "guest_free_bytes": 34926219264,
+      "state": "failed-compression-readonly-root-drift-audit"
+    },
+    "retry_performed": false
+  },
+  "not_executed": [
+    "native SquashFS compressor/extraction",
+    "initramfs capacity gate and assembly",
+    "ISO capacity gate and assembly",
+    "ISO transfer and SHA256",
+    "QEMU/KVM graphical ISO boot",
+    "login/desktop/Toddy entry verification",
+    "installation",
+    "B06 acceptance",
+    "G2 acceptance"
+  ],
+  "iso": null,
+  "preserved_guest_root": "/mnt/lfs/sources/stage/toddy-mvp-live-image-8-reviewed/mvp-live-root-2",
+  "final_vm_observation": {
+    "date": "2026-11-20",
+    "candidate_container": "exited0",
+    "qemu_processes": 0,
+    "guest_writers": 0,
+    "candidate_qcow2_checks": "passed for builder and target",
+    "accepted_backing_identities": "unchanged",
+    "guest_restarted_for_handoff": false
+  },
+  "raw_evidence": {
+    "reconcile.json": {
+      "path": ".local/phase2/b06-generation8/reconcile.json",
+      "sha256": "aa03eee232a2b42f89a5f30c96c99c4ffed55d9037a6b08d313fcba234c1b46a",
+      "bytes": 232284
+    },
+    "independent-review.json": {
+      "path": ".local/phase2/b06-generation8/independent-review.json",
+      "sha256": "12f68cddb7a3af71da16494bf8486524604fa010ad7b510804dab2da56d1b92d",
+      "bytes": 769
+    },
+    "finalizer-evidence.json": {
+      "path": ".local/phase2/b06-generation8/finalizer-evidence.json",
+      "sha256": "83fe3fdd265b714c4578b3c16799ecdc9ffeeaca3d353ded2b502583f90548a1",
+      "bytes": 7472
+    },
+    "live-evidence.json": {
+      "path": ".local/phase2/b06-generation8/live-evidence.json",
+      "sha256": "4190db97b741fb90126934ea301cc977d277d0c60b51031cb71158308479a983",
+      "bytes": 8367
+    },
+    "compression-admission.log": {
+      "path": ".local/phase2/b06-generation8/compression-admission.log",
+      "sha256": "b00e985bd5aaf5fe39a49710aad44a2a4f24d17bc987755bf109e6ae1304a623",
+      "bytes": 462
+    },
+    "compression-host-admission.json": {
+      "path": ".local/phase2/b06-generation8/compression-host-admission.json",
+      "sha256": "342d50dc414094bcd1e7a08ccf5d7e497b53c2c2374cd8008f671ce753d08bd4",
+      "bytes": 171
+    },
+    "root-drift-audit.log": {
+      "path": ".local/phase2/b06-generation8/root-drift-audit.log",
+      "sha256": "e036cdc5e59fcf2b6c1501d82158f805a0d421cd35ae80a5dc163bbba73126e1",
+      "bytes": 1228
+    },
+    "final-evidence.json": {
+      "path": ".local/phase2/b06-generation8/final-evidence.json",
+      "sha256": "cbe4a8fa92d64ea2ec720bfe14394caa81c3ee426579912bd510408d997459d3",
+      "bytes": 556901
+    },
+    "b06-generation8-unpack.log": {
+      "path": ".local/phase2/b06-generation8/b06-generation8-unpack.log",
+      "sha256": "768c45a389e14c8acf55b37df4a91966c6091b48ef5fc67458bfd959576fbe8a",
+      "bytes": 958
+    },
+    "b06-generation8-resource.log": {
+      "path": ".local/phase2/b06-generation8/b06-generation8-resource.log",
+      "sha256": "62e1945bc63e3ccfa6f47534628b467d7f0a0a87cf80cfc2b916edbf6397fcb6",
+      "bytes": 134826
+    },
+    "b06-generation8-finalize.log": {
+      "path": ".local/phase2/b06-generation8/b06-generation8-finalize.log",
+      "sha256": "0a552e21b4d7e56899e89ace44325e8e14077a216c0fa75fb1235092fb67e594",
+      "bytes": 4501
+    },
+    "b06-generation8-live.log": {
+      "path": ".local/phase2/b06-generation8/b06-generation8-live.log",
+      "sha256": "6720260ae4d57b7a6f94197b754fb9aa985bd0cb6d6efe8a35f4d1516cc02e9d",
+      "bytes": 6021
+    },
+    "b06-generation8-compress.log": {
+      "path": ".local/phase2/b06-generation8/b06-generation8-compress.log",
+      "sha256": "8b073a085ccf53cfec4baac26f4ba8510c7e72006bbc491eadb4daf12962652e",
+      "bytes": 1033
+    },
+    "make-check-source.log": {
+      "path": ".local/phase2/b06-generation8/make-check-source.log",
+      "sha256": "5193882744bbf9d169b9ec8dedc6cf6542a0cf4323e8998e834ef1e40f90e9bc",
+      "bytes": 203198
+    },
+    "focused-corrected.log": {
+      "path": ".local/phase2/b06-generation8/focused-corrected.log",
+      "sha256": "bef2a353ace927a05b51788025090962cf141dff18bd7ec0d1b27c30a6f7e978",
+      "bytes": 133
+    },
+    "probe-dconf.log": {
+      "path": ".local/phase2/b06-generation8/probe-dconf.log",
+      "sha256": "b3fccccf230c85b95812d863ce3213b65a294378682b8764b910b9c66e6e5643",
+      "bytes": 807
+    },
+    "source-coherence.json": {
+      "path": ".local/phase2/b06-generation8/source-coherence.json",
+      "sha256": "c2512ebfe9ddda8cb839833b4e7261cdafa5d9088a3e4f89d06484ffb35c1389",
+      "bytes": 680
+    },
+    "make-check-handoff.log": {
+      "path": ".local/phase2/b06-generation8/make-check-handoff.log",
+      "sha256": "8755e2f9c6d53934a40f6450efa457446982de2390a28f5bd018c3cc14876bba",
+      "bytes": 203198
+    }
+  },
+  "next_action": "Review retained generation8 drift; prepare post-finalizer dconf verification using a disposable overlay only. A future separately authorized cut must remeasure capacity and select a fresh unique generation. Do not repair/retry generation8 or refresh its assembly manifest; do not replay generation6/7 intents."
+}

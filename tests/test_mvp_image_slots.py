@@ -9,9 +9,9 @@ def module(name):
 a=module('image_assemble');m=module('image_media');i=module('image_inputs');c=module('candidate_root_custody')
 class MVPSlotsTests(unittest.TestCase):
  def test_failed_mvp_root_is_preserved_and_next_generation_is_distinct(self):
-  self.assertEqual(a.GENERATIONS['mvp-live'][0],'toddy-mvp-live-image-7')
+  self.assertEqual(a.GENERATIONS['mvp-live'][0],'toddy-mvp-live-image-9')
   self.assertNotEqual(a.GENERATIONS['mvp-live'][0],'toddy-mvp-live-image-1')
-  self.assertEqual(a.GENERATIONS['mvp-live-reviewed'][0],'toddy-mvp-live-image-7-reviewed')
+  self.assertEqual(a.GENERATIONS['mvp-live-reviewed'][0],'toddy-mvp-live-image-9-reviewed')
   with patch.object(c,'PROFILE','offline'):
    c.configure('mvp-live')
    self.assertEqual(c.WORK.name,a.GENERATIONS['mvp-live'][0])

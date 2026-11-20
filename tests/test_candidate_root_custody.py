@@ -1,5 +1,5 @@
 """Unprivileged synthetic filesystem/tar fixtures; no guest/cache retirement."""
-import base64,copy,gzip,hashlib,importlib.util,io,json,os,struct,subprocess,sys,tarfile,tempfile,unittest
+import base64,copy,gzip,hashlib,importlib.util,io,json,os,stat,struct,subprocess,sys,tarfile,tempfile,unittest
 from pathlib import Path
 from unittest.mock import Mock,patch
 ROOT=Path(__file__).resolve().parents[1]
@@ -79,6 +79,20 @@ class CandidateArchiveTests(unittest.TestCase):
             self.assertIn('custody-mvp-live-stage7-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
         finally:
             guest.configure('offline');host.configure('offline')
+    def test_observer_stage8_has_only_its_fixed_archival_context(self):
+        guest.configure('mvp-live-stage8');host.configure('mvp-live-stage8')
+        try:
+            self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-mvp-live-image-8-reviewed/mvp-live-root-2'))
+            self.assertEqual(guest.CUSTODY.name,'stage8-root-custody-1')
+            self.assertFalse(guest.CUSTODY.is_relative_to(guest.ARTIFACT))
+            self.assertEqual(host.CONTEXT.name,'mvp-live-stage8-candidate-root-custody-8')
+            self.assertEqual(host.ARCHIVE_NAME,'mvp-live-stage8-candidate8-root.tar.gz')
+            self.assertTrue(host.command('inspect')[-1].endswith(' custody-mvp-live-stage8-inspect'))
+            self.assertIn("main('mvp-live-stage8')",(ROOT/'scripts/host/phase2_mvp_live_stage8_candidate_root_custody.py').read_text())
+            self.assertEqual(guest.STAGE8_PIN,[64788,11562326,10943709])
+        finally:
+            guest.configure('offline');host.configure('offline')
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.parent=Path(self.temp.name);self.root=self.parent/'root';self.root.mkdir()
         file=self.root/'a';file.write_bytes(b'public source fixture');file.chmod(0o6755);os.utime(file,ns=(1700000000123456789,1700000000123456789))
@@ -163,7 +177,7 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
 
 
     def test_only_synthetic_root_removed_after_durable_intent_and_evidence_retained(self):
-        for profile in ('offline','h11-expanded'):
+        for profile in ('offline','h11-expanded','mvp-live-stage8'):
             with self.subTest(profile=profile):self._retirement_fixture(profile)
 
     def _retirement_fixture(self,profile):
@@ -267,7 +281,7 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
             with self.subTest(profile=name):
                 guest.configure(name);host.configure(name)
-                generation=7 if name=='mvp-live' else 1
+                generation=9 if name=='mvp-live' else 1
                 self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+f'-image-{generation}/root'))
                 self.assertEqual(guest.FINAL_ROOT.name,name+'-root-2')
                 self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer-native-inputs' if kind=='offline' else 'live-native-inputs-4'))
@@ -335,5 +349,157 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
                     guest.REVIEWED.rmdir();(inputs/'expected-image-manifest.json').write_text('{"changed":true}')
                     with self.assertRaisesRegex(ValueError,'independent_review_binding'):guest.eligible()
             guest.configure('offline')
+
+
+class Stage8ObserverCustodyTests(unittest.TestCase):
+    def tearDown(self):guest.configure('offline');host.configure('offline')
+
+    def fixture_maps(self):
+        row={'mode':stat.S_IFDIR|0o755,'uid':0,'gid':0,'mtime_ns':1700000000000000000,'xattrs':{}}
+        original={'entries':{'.':copy.deepcopy(row),'run':{**row,'mtime_ns':1795016359413183630},
+            'file':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'mtime_ns':1700000000000000000,'xattrs':{},'sha256':'a'*64,'size':9}},'hardlink_groups':[]}
+        actual=copy.deepcopy(original);actual['entries']['run']['mtime_ns']=1795016822210932469
+        actual['entries'].update(copy.deepcopy(guest.STAGE8_DCONF_STATE))
+        return original,actual
+
+    def test_only_recorded_full_image_and_observer_delta_passes(self):
+        original,actual=self.fixture_maps();before=copy.deepcopy(actual)
+        guest.observer_stage8_manifest(actual,original)
+        self.assertEqual(actual,before)
+
+    def test_unknown_missing_or_changed_original_output_is_rejected(self):
+        original,actual=self.fixture_maps()
+        for kind in ('unknown','missing','bytes','mode','uid','mtime','xattr','hardlinks'):
+            with self.subTest(kind=kind):
+                changed=copy.deepcopy(actual)
+                if kind=='unknown':changed['entries']['run/other']=copy.deepcopy(changed['entries']['run'])
+                elif kind=='missing':del changed['entries']['file']
+                elif kind=='bytes':changed['entries']['file']['sha256']='b'*64
+                elif kind=='mode':changed['entries']['file']['mode']=stat.S_IFREG|0o600
+                elif kind=='uid':changed['entries']['file']['uid']=101
+                elif kind=='mtime':changed['entries']['file']['mtime_ns']+=1
+                elif kind=='xattr':changed['entries']['file']['xattrs']['user.observer']='dmFsdWU='
+                else:changed['hardlink_groups']=[['file','run/user/0/dconf/user']]
+                with self.assertRaisesRegex(ValueError,'stage8_'):guest.observer_stage8_manifest(changed,original)
+
+    def test_changed_observer_metadata_bytes_or_run_stamp_is_rejected(self):
+        original,actual=self.fixture_maps()
+        for kind in ('uid','mode','size','bytes','mtime','xattr','run-mtime','missing-observer'):
+            with self.subTest(kind=kind):
+                changed=copy.deepcopy(actual);row=changed['entries']['run/user/0/dconf/user']
+                if kind=='uid':row['uid']=1000
+                elif kind=='mode':row['mode']=stat.S_IFREG|0o644
+                elif kind=='size':row['size']=3
+                elif kind=='bytes':row['sha256']='b'*64
+                elif kind=='mtime':row['mtime_ns']+=1
+                elif kind=='xattr':row['xattrs']['user.observer']='dmFsdWU='
+                elif kind=='run-mtime':changed['entries']['run']['mtime_ns']+=1
+                else:del changed['entries']['run/user']
+                with self.assertRaisesRegex(ValueError,'exact_stage8_observer'):guest.observer_stage8_manifest(changed,original)
+
+    def test_only_fixed_stage8_gcc_preservation_gets_its_signed_size_bound(self):
+        guest.configure('mvp-live-stage8');gcc=guest.INPUTS/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb'
+        self.assertEqual(guest.preserved_file_limit(gcc),450963224)
+        for other in (gcc.with_name('gcc_other_amd64.deb'),gcc.parent.parent/'gcc_16.2.0-1+toddy2_amd64.deb',guest.WORK/gcc.name):
+            self.assertEqual(guest.preserved_file_limit(other),256*1024**2)
+        for profile in ('mvp-live-stage7','mvp-live','offline'):
+            with patch.object(guest,'PROFILE',profile):self.assertEqual(guest.preserved_file_limit(gcc),256*1024**2)
+        with patch.object(guest,'PROFILE','h11-expanded'):self.assertEqual(guest.preserved_file_limit(gcc),8*1024**3)
+
+    def test_retirement_postcheck_uses_same_fixed_gcc_bound_without_removing_files(self):
+        from types import SimpleNamespace
+        guest.configure('mvp-live-stage8');gcc=guest.INPUTS/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb'
+        journal=guest.WORK/'finalized.json';image={'entries':{'.':{}},'unique_regular_bytes':0}
+        provenance={'preserved':{str(gcc):'d'*64,str(journal):'e'*64}}
+        state={'version':1,'state':'exported-awaiting-host-proof','profile':guest.PROFILE,'root':str(guest.ARTIFACT),
+            'producer_sha256':'a'*64,'archive_verifier_sha256':'a'*64,'metadata_sha256':'a'*64,
+            'tar_sha256':'a'*64,'tar_bytes':10240,'provenance':provenance}
+        proof={'version':1,'state':'complete-member-and-decompression-verified','metadata_sha256':'a'*64,
+            'tar_sha256':'a'*64,'tar_bytes':10240,'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64,
+            'member_proof':{'state':'all-members-bytes-metadata-verified','entries':1,'unique_regular_bytes':0,
+                'xattrs_ACLs_symlinks_hardlink_classes_verified':True,'privileged_extraction_performed':False}}
+        def digest(path):return provenance['preserved'].get(str(path),'a'*64)
+        def secured(path,limit=256*1024**2):
+            if Path(path)==gcc:
+                self.assertTrue(remove.called);self.assertEqual(limit,450963224)
+            elif Path(path)==journal and remove.called:self.assertEqual(limit,256*1024**2)
+            return Path(path)
+        with patch.object(guest,'read',side_effect=lambda path,**kw:state if Path(path)==guest.STATE else image),\
+                patch.object(guest.archive,'sha',side_effect=digest),patch.object(guest.archive,'snapshot',return_value=image),\
+                patch.object(guest,'eligible',return_value=provenance),patch.object(guest,'secured',side_effect=secured) as checked,\
+                patch.object(guest,'save'),patch.object(guest,'fsync'),patch.object(guest,'no_consumers'),\
+                patch.object(guest.shutil,'disk_usage',side_effect=[SimpleNamespace(free=40*1024**3),SimpleNamespace(free=40*1024**3+4096)]),\
+                patch.object(guest.shutil,'rmtree') as remove,patch.object(guest.os.path,'lexists',return_value=False):
+            remove.avoids_symlink_attacks=True
+            result=guest.retire(proof);self.assertEqual(result['state'],'complete')
+            checked.assert_any_call(str(gcc),450963224)
+            remove.assert_called_once_with(guest.ARTIFACT)
+
+    def test_archive_eligibility_binds_receipts_identity_inputs_and_full_drift(self):
+        from types import SimpleNamespace
+        original,actual=self.fixture_maps()
+        with tempfile.TemporaryDirectory() as temporary:
+            target=Path(temporary)/'target';repo=Path(temporary)/'repo';log=Path(temporary)/'log';repo.mkdir();log.mkdir()
+            with patch.object(guest,'TARGET',target),patch.object(guest,'ROOT',repo),patch.object(guest,'LOG',log):
+                guest.configure('mvp-live-stage8');work=guest.WORK;root=guest.ARTIFACT;root.mkdir(parents=True)
+                source=work.parent/'toddy-mvp-live-image-8';source.mkdir()
+                inputs=guest.INPUTS;inputs.mkdir();(inputs/'payload').mkdir();(inputs/'payload/manifest.json').write_text('{}')
+                gcc=inputs/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb';gcc.parent.mkdir();gcc.write_bytes(b'signed archive fixture')
+                final={'state':'native-finalizer-verified','root':guest.VIRTUAL,'assembly_pin':guest.STAGE8_PIN,
+                    'checks':{name:{'passed':True,'exit_status':0} for name in ('one','two')},'image_manifest_sha256':'a'*64,
+                    'payload_manifest_sha256':'b'*64,'policy_sha256':'c'*64,'generated_entries_sha256':'d'*64}
+                live={'state':'source-attributed-live-profile-candidate','root':guest.VIRTUAL,'assembly_pin':guest.STAGE8_PIN,
+                    'source_sha256':guest.STAGE8_LIVE_SOURCE,'base_image_manifest_sha256':'a'*64,
+                    'production_ready':False,'native_boot_verified':False,'native_login_verified':False}
+                for name,value in (('finalized.json',final),('live-profile-receipt.json',live),('evidence/image-manifest.json',original)):
+                    path=work/name;path.parent.mkdir(exist_ok=True);path.write_bytes(a.encoded(value))
+                journal={'assembled':True,'release_profile':True,'release_accepted':False,'g2_eligible':False,'installer_ready':False,
+                    'native_image':guest.VIRTUAL,'image':str(root),'live_profile_receipt_sha256':a.sha(work/'live-profile-receipt.json'),
+                    'native_finalizer_receipt_sha256':a.sha(work/'finalized.json')}
+                (work/'evidence/assembly.json').write_bytes(a.encoded(journal))
+                frozen={name:a.sha(work/name) for name in ('finalized.json','live-profile-receipt.json','evidence/image-manifest.json','evidence/assembly.json')}
+                (source/'unpacked.json').write_text('{}');source_hashes={'unpacked.json':a.sha(source/'unpacked.json')}
+                failure=log/'b06-generation8-compress.log';failure.write_text('retained native pre-compression failure')
+                for name in ('image_native.sh','candidate_root_custody.py','candidate_root_archive.py'):
+                    path=repo/'scripts/build/phase2'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('# fixture')
+                def metadata(path,mode):
+                    return SimpleNamespace(st_dev=64788,st_ino=10943709 if path==root else 11562326 if path==work else 10943708)
+                def recheck(value):
+                    value.descriptor={'payload_manifest_sha256':'b'*64,'policy_sha256':'c'*64,'image_manifest_sha256':'a'*64}
+                    value.pins={'generated-entries.json':'d'*64}
+                payload=SimpleNamespace(CHECKS={'one','two'})
+                with patch.object(guest,'private',side_effect=metadata),patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)) as secured_files,\
+                        patch.object(guest,'read',side_effect=lambda path,**kw:json.loads(Path(path).read_bytes())),\
+                        patch.object(guest,'payload_module',return_value=payload),patch.object(guest,'STAGE8_FROZEN',frozen),\
+                        patch.object(guest,'STAGE8_SOURCE_JOURNALS',source_hashes),patch.object(guest,'STAGE8_FAILURE_SHA',a.sha(failure)),\
+                        patch.object(guest,'STAGE8_ENTRY_COUNTS',(len(original['entries']),len(actual['entries']))),\
+                        patch.object(guest.archive,'snapshot',return_value=actual),patch.object(guest.ReviewedInputs,'recheck',autospec=True,side_effect=recheck) as checked_inputs,\
+                        patch.object(guest,'no_mounts'),patch.object(guest.shutil,'rmtree') as remove:
+                    result=guest.eligible()
+                    self.assertEqual(result['assembly_pin'],guest.STAGE8_PIN)
+                    self.assertEqual(result['workflow_boundary'],'observed-stage8-root-archival-only-no-media-or-boot-acceptance')
+                    self.assertFalse(result['ephemeral_finalizer_reports_replayed'])
+                    self.assertIn(str(failure),result['preserved']);self.assertIn(str(source/'unpacked.json'),result['preserved'])
+                    secured_files.assert_any_call(gcc,450963224)
+                    self.assertIn(str(gcc),result['preserved'])
+                    remove.assert_not_called()
+                    final_bytes=(work/'finalized.json').read_bytes()
+                    (work/'finalized.json').write_text('{"changed":true}')
+                    with self.assertRaisesRegex(ValueError,'frozen_receipt_changed'):guest.eligible()
+                    (work/'finalized.json').write_bytes(final_bytes)
+                    with patch.object(guest,'STAGE8_PIN',[64788,11562326,999]):
+                        with self.assertRaisesRegex(ValueError,'frozen_root_identity'):guest.eligible()
+                    unexpected=work.parent/'toddy-mvp-live-compression-1';unexpected.mkdir()
+                    with self.assertRaisesRegex(ValueError,'unexpected_media_output'):guest.eligible()
+                    unexpected.rmdir()
+                    failed_bytes=failure.read_bytes();failure.write_text('changed failure')
+                    with self.assertRaisesRegex(ValueError,'compression_failure_changed'):guest.eligible()
+                    failure.write_bytes(failed_bytes)
+                    def bad_input(value):
+                        recheck(value);value.descriptor['payload_manifest_sha256']='f'*64
+                    checked_inputs.side_effect=bad_input
+                    with self.assertRaisesRegex(ValueError,'signed_inputs_changed'):guest.eligible()
+                    checked_inputs.side_effect=recheck
+                    remove.assert_not_called()
 
 if __name__=='__main__':unittest.main()

@@ -1,20 +1,23 @@
 # Current Phase 2 delivery execution
 
-Updated: 2026-11-18, America/Sao_Paulo.
+Updated: 2026-11-20, America/Sao_Paulo.
 
-The next deliverable is a **local, explicitly interim owner preview** of the
-graphical VM. It is not B13/G2, an installable release, or a public download.
-Installer9, signed export8, inputs4 and generation7 have passed native package,
-resource and finalizer gates. The live stage stopped on the 0600 mode of the
-generated Toddy dconf database; its intent and journals are retained, and its
-partial root now has complete verified host custody. Earlier failed roots have
-separate verified custody. The current slice is stopped after
-two live-stage corrections. See the [current checkpoint](PHASE-2-CHECKPOINT.md)
-and [generation7 evidence](evidence/B06-generation7.md). The next slice must
-recheck the root/compression capacity before creating another root, then attempt
-one fresh stage with the exact mode correction. The ISO gate is measured from
-actual compressed/initramfs sizes before its write. No ISO or boot claim
-follows from package/finalizer success.
+The single bounded generation8 local graphical ISO cut is **closed after a failed
+compression gate**. Its329-package qualification, independent full-root review,
+nine-check finalization and live staging passed. The coordinator then ran native
+`dconf read` against the finalized writable root; Dconf created runtime state
+under `/run/user/0/dconf` after its assembly snapshot. The exact-image gate
+correctly rejected that drift before creating compression output. No retry or
+second generation was attempted. See the [checkpoint](PHASE-2-CHECKPOINT.md) and
+[generation8 evidence](evidence/B06-generation8.md).
+
+No ISO, graphical ISO boot, installation, B06/G2 acceptance or public download
+exists from this cut. Preserve generation8 and generation6/7 evidence. The next
+safe source/procedure change is to execute post-finalizer native Dconf queries
+only in a disposable overlay. A future separately authorized cut must remeasure
+capacity and use a fresh unique generation. The general delivery sequence below
+is background planning; it does not reopen this closed attempt or authorize
+B07–B13 work under the current bounded request.
 
 ## Small verified slices
 
