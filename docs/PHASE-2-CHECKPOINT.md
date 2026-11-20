@@ -1,5 +1,36 @@
 # Phase 2 continuation card
 
+## Active B06 next cut: generation9 admission (2026-11-20)
+
+The owner resumed the remaining plan and required commit/push/standard main
+integration; [ADR0252](adr/0252-owner-resumes-plan-and-standard-git-flow.md).
+Current topic branch starts at2edf6fb, clean; PR2 checks passed and it is ready
+for review. Main remainsfecedfa because the required CODEOWNER approval cannot
+be supplied by the connected account that authored the PR. GitHub rejected
+self-approval; preserve this external merge dependency without bypassing rules.
+
+One coordinator restarted the exact retained Candidate after both cold qcow2
+checks and accepted-backing guards passed. New boot9644487d, designated204GiB
+target/UUID unchanged, free34,926,223,360 bytes, generation8 root present and9
+slots absent; no package/compiler/image job remains. That space does not admit
+a new root plus compression with the16GiB reserve. Current work: isolated
+source workers prepare exact complete generation8 custody and disposable-overlay
+Dconf verification; independent reviewer audits capacity/source/evidence.
+Only the coordinator may write the guest. Private new logs:
+`.local/phase2/b06-generation9/`; earlier ledger and evidence stay intact.
+
+Source now integrates exact stage8 custody, fixed generation9 routing and a
+read-only-lower disposable Dconf verifier.51 focused tests, shell syntax and
+make check1216tests/24.594s passed. Independent final source review is pending.
+
+**Next:** finish independent review, commit/check coherent source, sync under
+the exclusive lock, then inspect/archive gen8 only through full bytes/metadata/
+ACL/hardlink/decompression host proof. Retire only that exact guest root after
+proof; remeasure source/input identity and space before the single new9 root.
+Never replay old intents or run Dconf queries against a finalized writable root.
+If9 or any media result fails/turns uncertain, preserve it and stop that attempt
+without another generation. No ISO/boot/B06/G2 acceptance currently exists.
+
 ## Closed B06 generation8 cut: compression blocked (2026-11-18)
 
 Handoff reconciled2026-11-20. Initial checkout was clean main at fecedfa; work is

@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-20T16:56:53+00:00
+Updated: 2026-11-20T17:09:29+00:00
 
 Bootstrap: ready_for_development
 
-B01–B05 accepted (41% Phase 2); B06 in progress. The single bounded generation8 passed signed export8/inputs4 admission, 329-package qualification, independent full-root review, nine-check finalization and live staging. The coordinator then ran native dconf read against the finalized writable root; it created /run/user/0/dconf runtime state after the assembly snapshot. The compression gate correctly failed before creating its output slot. Generation8 and all receipts are preserved; no retry or second generation is authorized within this closed cut. No ISO, graphical ISO boot, installation, B06/G2 acceptance or public release exists. Candidate is cold, exited0; cold qcow2 checks and accepted backing identities passed on 2026-11-20. Last live guest free space was 34,926,223,360 bytes on 2026-11-18. See docs/PHASE-2-CHECKPOINT.md.
+B01–B05 accepted (41% Phase 2); B06 in progress. Owner resumed the remaining approved plan and standard commit/push/protected-main flow on 2026-11-20 (ADR0252). The bounded generation8 remains preserved after observer-induced root drift blocked compression; no ISO/boot/installation/B06/G2 acceptance exists. New generation9 admission is in preparation: exact generation8 custody and disposable-overlay Dconf verification, then one fresh root only if signed input, independent review and measured capacity gates pass. Candidate target is exact204GiB with 34,926,223,360 bytes free; more space requires complete host proof before retiring the designated failed root. One guest writer. Main integration awaits valid CODEOWNER review; GitHub forbids author self-approval. See docs/PHASE-2-CHECKPOINT.md.
 
 Foundation: **100%** · Agentic desktop: **41%**
 
