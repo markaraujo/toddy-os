@@ -13,8 +13,8 @@ ROOT=vm.ROOT
 
 def configure(profile):
     global PROFILE,CONTEXT,ARCHIVE_NAME
-    if profile not in ('offline','live','mvp-offline','mvp-live','mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
-    generation=8 if profile=='mvp-live' else 7 if profile=='mvp-live-stage7' else 6 if profile=='mvp-live-stage6' else 5 if profile=='mvp-live-failed5' else 4 if profile=='mvp-live-failed4' else 3 if profile=='mvp-live-failed3' else 1
+    if profile not in ('offline','live','mvp-offline','mvp-live','mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','mvp-live-stage8','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
+    generation=8 if profile in ('mvp-live','mvp-live-stage8') else 7 if profile=='mvp-live-stage7' else 6 if profile=='mvp-live-stage6' else 5 if profile=='mvp-live-failed5' else 4 if profile=='mvp-live-failed4' else 3 if profile=='mvp-live-failed3' else 1
     PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+f'-candidate-root-custody-{generation}');ARCHIVE_NAME=profile+f'-candidate{generation}-root.tar.gz'
     if profile in ('h10-expanded','h11-expanded'):
         CONTEXT=ROOT/'.local/phase2'/(profile+'-root-custody-1');ARCHIVE_NAME=profile+'-root.tar.gz'
@@ -97,7 +97,7 @@ def main(profile='offline'):
         if os.path.lexists(CONTEXT):raise ValueError('candidate_root_host_existing_or_uncertain_no_replay')
         identity=candidate.owned();candidate.bases();selected=read_guest('inspect')
         if selected.get('state')!='eligible-'+PROFILE+'-candidate1-custody' or type(selected.get('tar_upper_bound_bytes')) is not int or selected['tar_upper_bound_bytes']<=0:raise ValueError('candidate_root_host_actual_eligibility_required')
-        reserve=(host_floor(True) if PROFILE in ('mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7') else
+        reserve=(host_floor(True) if PROFILE in ('mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','mvp-live-stage8') else
             json.loads((ROOT/'config/build-host.lock.json').read_bytes())['host_free_reserve_gib']*1024**3)
         upper=selected['tar_upper_bound_bytes'];space=os.statvfs(parent)
         if space.f_bavail*space.f_frsize<reserve+upper+512*1024**2:raise ValueError('candidate_root_host_reserve_plus_whole_stream_bound')
@@ -106,7 +106,9 @@ def main(profile='offline'):
             'guest_helper_sha256':archive.sha(ROOT/'scripts/build/phase2/candidate_root_custody.py'),
             'protected_view_driver_sha256':archive.sha(ROOT/'scripts/build/phase2/image_native.sh'),
             'archive_verifier_sha256':archive.sha(Path(archive.__file__)),'host_producer_sha256':archive.sha(Path(__file__)),
-            'profile':PROFILE,'host_entry_sha256':archive.sha(Path(sys.argv[0]).resolve()),'scope':'Only fixed '+PROFILE+' candidate1 root; all journals/final roots/signed bundles/accepted backings retained'}
+            'profile':PROFILE,'host_entry_sha256':archive.sha(Path(sys.argv[0]).resolve()),
+            'scope':('Only frozen stage8 observer-drift root; all journals/signed bundles/other roots/accepted backings retained' if PROFILE=='mvp-live-stage8' else
+                     'Only fixed '+PROFILE+' candidate1 root; all journals/final roots/signed bundles/accepted backings retained')}
         save(CONTEXT/'result.json',state);partial=CONTEXT/(ARCHIVE_NAME+'.part');packed=CONTEXT/ARCHIVE_NAME
         with (CONTEXT/'export.log').open('xb') as log:
             os.fchmod(log.fileno(),0o600);process=subprocess.Popen(command('export'),stdout=subprocess.PIPE,stderr=log)

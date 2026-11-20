@@ -31,9 +31,9 @@ HISTORICAL={'h10-expanded':('h10-live-root',8707435,1794055093154113811,'h10'),
 
 def configure(profile):
     global PROFILE,WORK,ARTIFACT,REVIEWED,FINAL_ROOT,INPUTS,CUSTODY,STATE,VIRTUAL
-    if profile in ('mvp-live-stage6','mvp-live-stage7'):
+    if profile in ('mvp-live-stage6','mvp-live-stage7','mvp-live-stage8'):
         PROFILE=profile
-        name='toddy-mvp-live-image-2' if profile=='mvp-live-stage6' else 'toddy-mvp-live-image-7-reviewed'
+        name='toddy-mvp-live-image-2' if profile=='mvp-live-stage6' else ('toddy-mvp-live-image-7-reviewed' if profile=='mvp-live-stage7' else 'toddy-mvp-live-image-8-reviewed')
         WORK=TARGET/'sources/stage'/name;ARTIFACT=WORK/'mvp-live-root-2'
         REVIEWED=WORK;FINAL_ROOT=ARTIFACT;INPUTS=TARGET/'sources/stage/toddy-mvp-live-native-inputs-4'
         CUSTODY=WORK/(profile.removeprefix('mvp-live-')+'-root-custody-1');STATE=CUSTODY/'custody.json'
@@ -201,6 +201,7 @@ def historical_eligible():
 def eligible():
     """Fixed workflow boundary; full archive metadata proof remains separate."""
     if PROFILE in HISTORICAL:return historical_eligible()
+    if PROFILE=='mvp-live-stage8':return observer_stage8_eligible()
     if PROFILE in ('mvp-live-stage6','mvp-live-stage7'):return failed_stage_eligible()
     if PROFILE in ('mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5'):return failed_live_eligible()
     p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
@@ -332,6 +333,114 @@ def failed_stage_eligible():
         'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
 
 
+
+# Exact retained observer-drift boundary; these hashes are archival provenance,
+# never permission to accept, repair or replay an image generation.
+STAGE8_PIN=[64788,11562326,10943709]
+STAGE8_ENTRY_COUNTS=(150294,150298)
+STAGE8_FAILURE_SHA='8b073a085ccf53cfec4baac26f4ba8510c7e72006bbc491eadb4daf12962652e'
+STAGE8_LIVE_SOURCE='1e2329a179ec55592a683e21e397def916809853244821c5539e5590fd71926f'
+STAGE8_FROZEN={'acl-report.json': '95d815bea4d12ef7fe7128331dd123d97ed4b2e46db327e39b817c7cd6f6c50a',
+ 'adopted.json': '42ea401fe6ba73de0937c5d24e1d8bfe2f3aee93cadfa611170e604beed7f610',
+ 'adoption-intent.json': '8677afda4458fa2a6b1c61224e5ef43d98fe41dc5e1873ee271a229b2b3186b5',
+ 'evidence/assembly.json': '49d9ff60ad0065ac28cc38d70b3970ea1eda6574261b21f5c6ffc88e3d5b09d6',
+ 'evidence/image-manifest.json': 'bd5c3f319af634949d3a2fe2433095a60c23d7145d5cf4c547479491a44af93e',
+ 'finalize-intent.json': 'f1d8ba4ada4d5670c8aa38b47dac7db1c1959db7ff9d8b2632ce00d03fb2ede4',
+ 'finalized.json': 'dcf94bffd2255752628b32ea6993f52a15f4a9c0c830fe27fcaabe66bcd2233a',
+ 'live-image-manifest.json': 'f9c138fdb5204a470581c5e5c574512f15d946c795d5907a28ecbe38c8f94fdd',
+ 'live-profile-intent.json': '7773d9f6628934c112285c1c90f541bd4f84e50de08d35cc7f89db9688b3e454',
+ 'live-profile-receipt.json': 'cacf5c989e48d5d1c87b386514239c1df08a2bf02f3acf17c7c1fe3397ef6e5d',
+ 'synthetic-reset-intent.json': '56fb012f5812f351e439d2a0f0cfbef9aed3fc6976fdf6ef11cd4b543d0d6b16'}
+STAGE8_SOURCE_JOURNALS={'candidate-clean-image-manifest.json': 'fcdd70749575fc562fddc007d9a38f8f92d09fd16eb0ae34421737cdd2eb5941',
+ 'candidate-generated-entries.json': '93b6042c5f3cae9ee0dff2142182e9729f32537f646acf7b9fc15c4bdb33af26',
+ 'candidate-resource-receipt.json': '544adf813323a12297bbf8833d1f786057271b96b163ff7c0b7ff6068a11a548',
+ 'dpkg.log': '10bd0b89bdd51fd984748391894f22b994597c932cca0a576658b737b71250ba',
+ 'resource-intent.json': 'eefc5315e085ce6abe582d72b4dbaf63ab94f81a986ae9ee6c6b23c2b03eeac2',
+ 'unpack-intent.json': 'db146d5b332de193d03f327a528f5b32d8ce82bcd63ce08e339303ca254d2850',
+ 'unpacked.json': '2eb754381f3bfbff1eec779fb50103a71d8130d8262cae283b733903e9b1be31'}
+STAGE8_DCONF_STATE={
+    'run/user':{'mode':stat.S_IFDIR|0o700,'uid':0,'gid':0,'mtime_ns':1795016822210932469,'xattrs':{}},
+    'run/user/0':{'mode':stat.S_IFDIR|0o700,'uid':0,'gid':0,'mtime_ns':1795016822211932463,'xattrs':{}},
+    'run/user/0/dconf':{'mode':stat.S_IFDIR|0o700,'uid':0,'gid':0,'mtime_ns':1795016822211932463,'xattrs':{}},
+    'run/user/0/dconf/user':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'mtime_ns':1795016822216932437,
+        'xattrs':{},'size':2,'sha256':'96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7'}}
+
+
+def observer_stage8_manifest(image,original):
+    """Require the complete original image plus the four exact observer paths."""
+    entries={name:{**row,'xattrs':{key:hashlib.sha256(base64.b64decode(value,validate=True)).hexdigest()
+        for key,value in row['xattrs'].items()}} for name,row in image['entries'].items()}
+    for row in entries.values():
+        if 'symlink' in row:row['symlink']=Path(row['symlink']).as_posix()
+    expected=original['entries']
+    if (set(entries)-set(expected)!=set(STAGE8_DCONF_STATE) or set(expected)-set(entries) or
+            any(entries[name]!=row for name,row in STAGE8_DCONF_STATE.items()) or
+            expected.get('run',{}).get('mtime_ns')!=1795016359413183630 or
+            entries.get('run')!={**expected.get('run',{}),'mtime_ns':1795016822210932469} or
+            image['hardlink_groups']!=original['hardlink_groups']):
+        raise ValueError('candidate_root_custody_exact_stage8_observer_drift')
+    retained={name:row for name,row in entries.items() if name not in STAGE8_DCONF_STATE}
+    retained['run']=expected['run']
+    if retained!=expected:raise ValueError('candidate_root_custody_stage8_original_full_image_differs')
+
+
+def observer_stage8_eligible():
+    """Archive one frozen post-live root; no cache cleanup or media acceptance."""
+    p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
+    pin=[root.st_dev,work.st_ino,root.st_ino]
+    if pin!=STAGE8_PIN:raise ValueError('candidate_root_custody_stage8_frozen_root_identity')
+    preserved={}
+    for name,expected in STAGE8_FROZEN.items():
+        path=secured(WORK/name)
+        if archive.sha(path)!=expected:raise ValueError('candidate_root_custody_stage8_frozen_receipt_changed')
+        preserved[str(path)]=expected
+    finalized=read(WORK/'finalized.json');live=read(WORK/'live-profile-receipt.json');journal=read(WORK/'evidence/assembly.json')
+    if (finalized.get('state')!='native-finalizer-verified' or finalized.get('root')!=VIRTUAL or finalized.get('assembly_pin')!=pin or
+            set(finalized.get('checks',{}))!=set(p.CHECKS) or
+            any(row.get('passed') is not True or type(row.get('exit_status')) is not int or row['exit_status']!=0 for row in finalized['checks'].values()) or
+            live.get('state')!='source-attributed-live-profile-candidate' or live.get('root')!=VIRTUAL or live.get('assembly_pin')!=pin or
+            live.get('source_sha256')!=STAGE8_LIVE_SOURCE or live.get('base_image_manifest_sha256')!=finalized.get('image_manifest_sha256') or
+            live.get('production_ready') is not False or live.get('native_boot_verified') is not False or live.get('native_login_verified') is not False or
+            journal.get('assembled') is not True or journal.get('release_profile') is not True or journal.get('release_accepted') is not False or
+            journal.get('g2_eligible') is not False or journal.get('installer_ready') is not False or journal.get('native_image')!=VIRTUAL or
+            journal.get('image')!=str(ARTIFACT) or journal.get('live_profile_receipt_sha256')!=STAGE8_FROZEN['live-profile-receipt.json'] or
+            journal.get('native_finalizer_receipt_sha256')!=STAGE8_FROZEN['finalized.json']):
+        raise ValueError('candidate_root_custody_stage8_actual_live_boundary')
+    # The cold boot removed ephemeral /run reports. Their real completed receipt
+    # is pinned above; archive eligibility does not rerun or recreate any report.
+    source=WORK.parent/'toddy-mvp-live-image-8';source_info=private(source,0o700)
+    if source_info.st_ino!=10943708 or source_info.st_dev!=root.st_dev:raise ValueError('candidate_root_custody_stage8_source_identity')
+    for name,expected in STAGE8_SOURCE_JOURNALS.items():
+        path=secured(source/name)
+        if archive.sha(path)!=expected:raise ValueError('candidate_root_custody_stage8_source_journal_changed')
+        preserved[str(path)]=expected
+    failure=secured(LOG/'b06-generation8-compress.log')
+    if archive.sha(failure)!=STAGE8_FAILURE_SHA:
+        raise ValueError('candidate_root_custody_stage8_compression_failure_changed')
+    preserved[str(failure)]=archive.sha(failure)
+    for name in ('toddy-mvp-live-compression-1','toddy-mvp-live-initramfs-1','toddy-mvp-release-media-1'):
+        if os.path.lexists(WORK.parent/name):raise ValueError('candidate_root_custody_stage8_unexpected_media_output')
+    original=read(WORK/'evidence/image-manifest.json');image=archive.snapshot(ARTIFACT)
+    if (len(original['entries']),len(image['entries']))!=STAGE8_ENTRY_COUNTS:raise ValueError('candidate_root_custody_stage8_frozen_entry_count')
+    observer_stage8_manifest(image,original)
+    inputs=object.__new__(ReviewedInputs);inputs.kind='mvp-live';inputs.base=INPUTS;inputs.bundle=INPUTS/'payload';inputs.recheck()
+    if (inputs.descriptor['payload_manifest_sha256']!=finalized.get('payload_manifest_sha256') or
+            inputs.descriptor['policy_sha256']!=finalized.get('policy_sha256') or
+            inputs.descriptor['image_manifest_sha256']!=finalized.get('image_manifest_sha256') or
+            inputs.pins['generated-entries.json']!=finalized.get('generated_entries_sha256')):
+        raise ValueError('candidate_root_custody_stage8_signed_inputs_changed')
+    paths=[path for path in INPUTS.rglob('*') if path.is_file()]
+    paths.extend(ROOT/'scripts/build/phase2'/name for name in ('image_native.sh','candidate_root_custody.py','candidate_root_archive.py'))
+    preserved.update({str(path):archive.sha(secured(path)) for path in paths})
+    inputs.recheck();no_mounts()
+    return {'profile':PROFILE,'assembly_pin':pin,'preserved':preserved,'reviewed_input_pins':inputs.pins,
+        'frozen_live_source_sha256':STAGE8_LIVE_SOURCE,'original_image_manifest_sha256':STAGE8_FROZEN['evidence/image-manifest.json'],
+        'workflow_boundary':'observed-stage8-root-archival-only-no-media-or-boot-acceptance',
+        'exact_observer_paths':sorted(STAGE8_DCONF_STATE),'original_run_mtime_ns':1795016359413183630,
+        'observed_run_mtime_ns':1795016822210932469,'root_retirement_only_after_complete_private_host_proof':True,
+        'ephemeral_finalizer_reports_replayed':False,'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
+
+
 def tar_custody():
     row=subprocess.check_output(['/usr/sbin/chroot',str(TARGET),'/usr/bin/dpkg-query','-W','-f=${Version}\t${Architecture}\t${Status}','tar'],text=True).split('\t')
     if len(row)!=3 or row[2]!='install ok installed':raise ValueError('candidate_root_custody_native_tar_status')
@@ -442,7 +551,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed1','mvp-live-failed3','mvp-live-failed4','mvp-live-failed5','mvp-live-stage6','mvp-live-stage7','mvp-live-stage8','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():
