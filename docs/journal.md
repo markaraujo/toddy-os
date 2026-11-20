@@ -4409,3 +4409,15 @@ installing it. Revision1 remains configured. This creates the artifact prerequis
 for later signed owner upgrade/remove/reinstall checks; it is not lifecycle or
 full-flow acceptance. Source/controller/boot/installer and publication work stays
 parallel in isolated worktrees, with the coordinator as sole guest writer.
+
+
+## 2026-11-18 — B06 generation8 bounded local ISO attempt
+
+Initial clean main fecedfa was confirmed; branch/PR2 isolated source and evidence.
+Signed export8/inputs4, fresh329-package qualification, independent full-root
+review, nine-check finalization and live staging passed. A coordinator native
+Dconf read then created runtime state in the finalized writable root. The
+compression gate rejected the changed image before output creation. Preserved
+evidence; no retry/second generation/ISO/boot. Cold handoff2026-11-20 confirmed
+Candidate exited0, no writer, qcow2 checks passed and accepted backings unchanged.
+See [generation8 evidence](evidence/B06-generation8.md).

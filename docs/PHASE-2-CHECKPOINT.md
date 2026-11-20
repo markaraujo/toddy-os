@@ -1,5 +1,40 @@
 # Phase 2 continuation card
 
+## Closed B06 generation8 cut: compression blocked (2026-11-18)
+
+Handoff reconciled2026-11-20. Initial checkout was clean main at fecedfa; work is
+in `b06/local-iso-generation8`, [PR2](https://github.com/markaraujo/toddy-os/pull/2).
+The one authorized fresh generation8 passed signed export8/inputs4 admission,
+unpack329packages, qualification19caches/zero blockers, independent150,280-entry
+review (SHAfcdd7074...), nine-check actual finalization and live staging0.
+The native dconf mode correction passed: root:root0644, SHAb7afc383..., correct
+three settings, no IBus output. [Full evidence](evidence/B06-generation8.md) and
+[receipt/hashes](evidence/B06-generation8.json).
+
+The coordinator's subsequent native `dconf read` against the writable finalized
+root initialized `/run/user/0/dconf/user`, creating four paths and changing
+`/run` mtime after the final snapshot. The compression command exited1 at the
+exact-image gate before creating its output slot. This observer error is recorded,
+not repaired: root, original snapshots, intents and logs are retained. No retry,
+second generation, compression artifact, initramfs, ISO, graphical ISO boot,
+installation or B06/G2 acceptance exists. B07–B13 were not advanced.
+
+Actual compression admission had passed: expanded bound6,837,329,920 bytes,
+required33,002,012,672, free34,926,219,264. Failure was image drift, not capacity.
+Last live guest free at stop:34,926,223,360 bytes (2026-11-18). Host free at cold
+handoff:116,035,272,704 bytes. On2026-11-20 the Candidate was cold/exited0 with no
+QEMU/writer; both candidate qcow2 checks and accepted backing identities passed.
+Inputs4 and generation6/7 guard hashes were unchanged at the verified stop.
+Private evidence: `.local/phase2/b06-generation8/`; runtime pointer/failure ledger
+now record this closed cut. Never treat an old unit/PID as a resume instruction.
+
+**Next:** review retained drift and move post-finalizer native Dconf queries to a
+disposable overlay. A separately authorized future cut must remeasure space and
+select a fresh unique generation; this cut permits no further guest writes.
+Do not delete observer output, replace the original assembly manifest, retry
+generation8 compression, or replay generation6/7 intents. Dashboard regeneration and final make check passed (1199tests/24.860s).
+Delivery stays on the branch and draft PR2; main remains unchanged.
+
 ## Current bounded stop after live stage generation 7 (2026-11-18)
 
 The owner authorized cleanup of verified unused copies and a separate read-only
