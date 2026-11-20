@@ -72,6 +72,15 @@ def secured(path,limit=256*1024*1024):
     return path
 
 
+
+def preserved_file_limit(path):
+    """Keep the one signed stage8 GCC archive within its exact frozen bound."""
+    if (PROFILE=='mvp-live-stage8' and
+            Path(path)==INPUTS/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb'):
+        return 450963224
+    return 8*1024**3 if PROFILE in HISTORICAL else 256*1024**2
+
+
 def read(path,limit=128*1024**2):return payload_module().strict(secured(path,limit).read_bytes())
 
 def save(path,value):
@@ -431,7 +440,7 @@ def observer_stage8_eligible():
         raise ValueError('candidate_root_custody_stage8_signed_inputs_changed')
     paths=[path for path in INPUTS.rglob('*') if path.is_file()]
     paths.extend(ROOT/'scripts/build/phase2'/name for name in ('image_native.sh','candidate_root_custody.py','candidate_root_archive.py'))
-    preserved.update({str(path):archive.sha(secured(path)) for path in paths})
+    preserved.update({str(path):archive.sha(secured(path,preserved_file_limit(path))) for path in paths})
     inputs.recheck();no_mounts()
     return {'profile':PROFILE,'assembly_pin':pin,'preserved':preserved,'reviewed_input_pins':inputs.pins,
         'frozen_live_source_sha256':STAGE8_LIVE_SOURCE,'original_image_manifest_sha256':STAGE8_FROZEN['evidence/image-manifest.json'],
@@ -516,7 +525,7 @@ def retire(proof):
     # this deletion. Root-owned parent+inode pins were rechecked above.
     shutil.rmtree(ARTIFACT);fsync(WORK)
     for path,sha in state['provenance']['preserved'].items():
-        if archive.sha(secured(path,8*1024**3 if PROFILE in HISTORICAL else 256*1024**2))!=sha:raise ValueError('candidate_root_custody_preserved_evidence_changed')
+        if archive.sha(secured(path,preserved_file_limit(path)))!=sha:raise ValueError('candidate_root_custody_preserved_evidence_changed')
     for path,expected in state['provenance'].get('preserved_links',{}).items():
         if preserved_link(Path(path),Path(expected['tree']))!=expected:raise ValueError('candidate_root_custody_preserved_link_changed')
     if os.path.lexists(ARTIFACT):raise ValueError('candidate_root_custody_root_remains')

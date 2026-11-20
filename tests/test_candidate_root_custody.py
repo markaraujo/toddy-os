@@ -397,6 +397,44 @@ class Stage8ObserverCustodyTests(unittest.TestCase):
                 else:del changed['entries']['run/user']
                 with self.assertRaisesRegex(ValueError,'exact_stage8_observer'):guest.observer_stage8_manifest(changed,original)
 
+    def test_only_fixed_stage8_gcc_preservation_gets_its_signed_size_bound(self):
+        guest.configure('mvp-live-stage8');gcc=guest.INPUTS/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb'
+        self.assertEqual(guest.preserved_file_limit(gcc),450963224)
+        for other in (gcc.with_name('gcc_other_amd64.deb'),gcc.parent.parent/'gcc_16.2.0-1+toddy2_amd64.deb',guest.WORK/gcc.name):
+            self.assertEqual(guest.preserved_file_limit(other),256*1024**2)
+        for profile in ('mvp-live-stage7','mvp-live','offline'):
+            with patch.object(guest,'PROFILE',profile):self.assertEqual(guest.preserved_file_limit(gcc),256*1024**2)
+        with patch.object(guest,'PROFILE','h11-expanded'):self.assertEqual(guest.preserved_file_limit(gcc),8*1024**3)
+
+    def test_retirement_postcheck_uses_same_fixed_gcc_bound_without_removing_files(self):
+        from types import SimpleNamespace
+        guest.configure('mvp-live-stage8');gcc=guest.INPUTS/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb'
+        journal=guest.WORK/'finalized.json';image={'entries':{'.':{}},'unique_regular_bytes':0}
+        provenance={'preserved':{str(gcc):'d'*64,str(journal):'e'*64}}
+        state={'version':1,'state':'exported-awaiting-host-proof','profile':guest.PROFILE,'root':str(guest.ARTIFACT),
+            'producer_sha256':'a'*64,'archive_verifier_sha256':'a'*64,'metadata_sha256':'a'*64,
+            'tar_sha256':'a'*64,'tar_bytes':10240,'provenance':provenance}
+        proof={'version':1,'state':'complete-member-and-decompression-verified','metadata_sha256':'a'*64,
+            'tar_sha256':'a'*64,'tar_bytes':10240,'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64,
+            'member_proof':{'state':'all-members-bytes-metadata-verified','entries':1,'unique_regular_bytes':0,
+                'xattrs_ACLs_symlinks_hardlink_classes_verified':True,'privileged_extraction_performed':False}}
+        def digest(path):return provenance['preserved'].get(str(path),'a'*64)
+        def secured(path,limit=256*1024**2):
+            if Path(path)==gcc:
+                self.assertTrue(remove.called);self.assertEqual(limit,450963224)
+            elif Path(path)==journal and remove.called:self.assertEqual(limit,256*1024**2)
+            return Path(path)
+        with patch.object(guest,'read',side_effect=lambda path,**kw:state if Path(path)==guest.STATE else image),\
+                patch.object(guest.archive,'sha',side_effect=digest),patch.object(guest.archive,'snapshot',return_value=image),\
+                patch.object(guest,'eligible',return_value=provenance),patch.object(guest,'secured',side_effect=secured) as checked,\
+                patch.object(guest,'save'),patch.object(guest,'fsync'),patch.object(guest,'no_consumers'),\
+                patch.object(guest.shutil,'disk_usage',side_effect=[SimpleNamespace(free=40*1024**3),SimpleNamespace(free=40*1024**3+4096)]),\
+                patch.object(guest.shutil,'rmtree') as remove,patch.object(guest.os.path,'lexists',return_value=False):
+            remove.avoids_symlink_attacks=True
+            result=guest.retire(proof);self.assertEqual(result['state'],'complete')
+            checked.assert_any_call(str(gcc),450963224)
+            remove.assert_called_once_with(guest.ARTIFACT)
+
     def test_archive_eligibility_binds_receipts_identity_inputs_and_full_drift(self):
         from types import SimpleNamespace
         original,actual=self.fixture_maps()
@@ -406,6 +444,7 @@ class Stage8ObserverCustodyTests(unittest.TestCase):
                 guest.configure('mvp-live-stage8');work=guest.WORK;root=guest.ARTIFACT;root.mkdir(parents=True)
                 source=work.parent/'toddy-mvp-live-image-8';source.mkdir()
                 inputs=guest.INPUTS;inputs.mkdir();(inputs/'payload').mkdir();(inputs/'payload/manifest.json').write_text('{}')
+                gcc=inputs/'payload/archives/gcc_16.2.0-1+toddy2_amd64.deb';gcc.parent.mkdir();gcc.write_bytes(b'signed archive fixture')
                 final={'state':'native-finalizer-verified','root':guest.VIRTUAL,'assembly_pin':guest.STAGE8_PIN,
                     'checks':{name:{'passed':True,'exit_status':0} for name in ('one','two')},'image_manifest_sha256':'a'*64,
                     'payload_manifest_sha256':'b'*64,'policy_sha256':'c'*64,'generated_entries_sha256':'d'*64}
@@ -429,7 +468,7 @@ class Stage8ObserverCustodyTests(unittest.TestCase):
                     value.descriptor={'payload_manifest_sha256':'b'*64,'policy_sha256':'c'*64,'image_manifest_sha256':'a'*64}
                     value.pins={'generated-entries.json':'d'*64}
                 payload=SimpleNamespace(CHECKS={'one','two'})
-                with patch.object(guest,'private',side_effect=metadata),patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)),\
+                with patch.object(guest,'private',side_effect=metadata),patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)) as secured_files,\
                         patch.object(guest,'read',side_effect=lambda path,**kw:json.loads(Path(path).read_bytes())),\
                         patch.object(guest,'payload_module',return_value=payload),patch.object(guest,'STAGE8_FROZEN',frozen),\
                         patch.object(guest,'STAGE8_SOURCE_JOURNALS',source_hashes),patch.object(guest,'STAGE8_FAILURE_SHA',a.sha(failure)),\
@@ -441,6 +480,8 @@ class Stage8ObserverCustodyTests(unittest.TestCase):
                     self.assertEqual(result['workflow_boundary'],'observed-stage8-root-archival-only-no-media-or-boot-acceptance')
                     self.assertFalse(result['ephemeral_finalizer_reports_replayed'])
                     self.assertIn(str(failure),result['preserved']);self.assertIn(str(source/'unpacked.json'),result['preserved'])
+                    secured_files.assert_any_call(gcc,450963224)
+                    self.assertIn(str(gcc),result['preserved'])
                     remove.assert_not_called()
                     final_bytes=(work/'finalized.json').read_bytes()
                     (work/'finalized.json').write_text('{"changed":true}')
