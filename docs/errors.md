@@ -1178,3 +1178,20 @@ temperature0/short unknown marker; job8 passed real task, active cancel, post-ca
 response, exact pre-generation context limit and other-UID/auth/Stop assertions.
 No package/model upgrade, hidden retry or failed marker rewrite was used. Earlier
 sanitation did not retain a precise upstream error cause; do not overstate it.
+
+
+## 2026-11-18 — B06 observer changed finalized generation8
+
+- Symptom: `media-mvp-compress` exited1 with `Actual image differs from final assembly`.
+- Cause: coordinator native `dconf read` against the writable finalized root
+  initialized four `/run/user/0/dconf` paths and changed `/run` mtime after its
+  snapshot. Query semantics did not make the filesystem operation read-only.
+- Evidence: exact drift audit; no missing entries, hardlinks match;150294→150298
+  entries. Compression directory and native compressor dispatch never occurred.
+- Action: stopped the bounded cut; preserved root/intents/receipts/logs, without
+  deleting observer state, refreshing the manifest, retrying or another generation.
+- Next: post-finalizer native Dconf verification must use a disposable overlay;
+  any future fresh generation requires a separately authorized capacity-reviewed cut.
+- Verification: independent reviewer confirmed cause and stop; ISO, graphical
+  boot, installation and B06/G2 acceptance remain unexecuted.
+- Evidence: [generation8](evidence/B06-generation8.md).

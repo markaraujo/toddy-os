@@ -1,46 +1,39 @@
 # Phase 2 continuation card
 
-## B06 bounded local ISO attempt: generation 8 (2026-11-18)
+## Closed B06 generation8 cut: compression blocked (2026-11-18)
 
-The owner authorized one fresh generation after all admission gates, with no
-B07–B13 progression or G2 acceptance. Initial Git was clean main at fecedfa.
-After the host restart the exact Candidate container was exited0, no writer
-remained, both candidate qcow2 checks passed and accepted backings were unchanged.
-The retained container was restarted once. Target serial/UUID and 204GiB size
-match; target free space is 41,193,058,304 bytes. Export8 has 329 packages and
-920 exact host/guest files including both reverified signatures. Inputs4 and old
-generation6/7 guards are inventoried privately. A disposable native overlay
-verified targeted dconf compile, root:root mode0644 and all three actual values;
-the lower dconf tree was unchanged and no IBus output was created.
+Handoff reconciled2026-11-20. Initial checkout was clean main at fecedfa; work is
+in `b06/local-iso-generation8`, [PR2](https://github.com/markaraujo/toddy-os/pull/2).
+The one authorized fresh generation8 passed signed export8/inputs4 admission,
+unpack329packages, qualification19caches/zero blockers, independent150,280-entry
+review (SHAfcdd7074...), nine-check actual finalization and live staging0.
+The native dconf mode correction passed: root:root0644, SHAb7afc383..., correct
+three settings, no IBus output. [Full evidence](evidence/B06-generation8.md) and
+[receipt/hashes](evidence/B06-generation8.json).
 
-Current slice: route only the fresh candidate/reviewed generation8; preserve
-historical custody profiles. Run focused slot/live/custody checks and make check,
-commit reviewed source, sync under the exclusive lock and verify coherence.
-Before root creation, remeasure host/guest space and enforce both the actual
-root allocation gate and forecast compression gate. Execute each write once,
-require 329 packages/zero blockers plus independent complete-image review, then
-actual finalization/live receipt. Any divergent result stops this cut without
-another generation. Measure compression/initramfs/ISO gates from actual inputs
-before each write. Private logs: `.local/phase2/b06-generation8/`.
+The coordinator's subsequent native `dconf read` against the writable finalized
+root initialized `/run/user/0/dconf/user`, creating four paths and changing
+`/run` mtime after the final snapshot. The compression command exited1 at the
+exact-image gate before creating its output slot. This observer error is recorded,
+not repaired: root, original snapshots, intents and logs are retained. No retry,
+second generation, compression artifact, initramfs, ISO, graphical ISO boot,
+installation or B06/G2 acceptance exists. B07–B13 were not advanced.
 
-Generation8 now passed unpack0 (329 packages), resource0 (19 caches/zero blockers),
-independent complete-image review (150,280 entries, SHAfcdd7074...), actual
-finalization0 (9/9 checks) and live0 with its own receipt/journal. The same
-root inode was retained. Independent finalizer/live receipt review passed.
-Actual live dconf is root:root0644, SHAb7afc383..., with all three native values
-correct and no IBus database. Final media snapshot has150,294 entries (including
-ACL sidecar), measured expanded bound6,837,329,920 bytes. Compression admission
-requires33,002,012,672 bytes; measured guest free34,926,219,264 gives
-1,924,206,592 bytes margin. Host free116,109,500,416 exceeds its conservative
-81,320,394,752-byte admission including temporary floor and qcow metadata margin.
+Actual compression admission had passed: expanded bound6,837,329,920 bytes,
+required33,002,012,672, free34,926,219,264. Failure was image drift, not capacity.
+Last live guest free at stop:34,926,223,360 bytes (2026-11-18). Host free at cold
+handoff:116,035,272,704 bytes. On2026-11-20 the Candidate was cold/exited0 with no
+QEMU/writer; both candidate qcow2 checks and accepted backing identities passed.
+Inputs4 and generation6/7 guard hashes were unchanged at the verified stop.
+Private evidence: `.local/phase2/b06-generation8/`; runtime pointer/failure ledger
+now record this closed cut. Never treat an old unit/PID as a resume instruction.
 
-Next: dispatch media-mvp-compress ONCE to the verified absent compression1 slot.
-It performs native compression, strict extraction, ACL restoration and full
-comparison under the guest lock. Keep2CPU/256MiB native compression settings;
-monitor healthy work, never restart. Native step timeout7200s; each step log is
-in target sources/stage/toddy-mvp-live-compression-1. After actual success,
-measure initramfs and ISO gates independently before their one-time writes.
-No ISO or actual boot is yet established.
+**Next:** review retained drift and move post-finalizer native Dconf queries to a
+disposable overlay. A separately authorized future cut must remeasure space and
+select a fresh unique generation; this cut permits no further guest writes.
+Do not delete observer output, replace the original assembly manifest, retry
+generation8 compression, or replay generation6/7 intents. Dashboard regeneration and final make check passed (1199tests/24.860s).
+Delivery stays on the branch and draft PR2; main remains unchanged.
 
 ## Current bounded stop after live stage generation 7 (2026-11-18)
 
